@@ -1,0 +1,34 @@
+ 
+{% macro Button(label, href="#", variant="sky-blue") %}
+  {% if variant == "sky-blue" %}
+    {% set colorClasses = "bg-sky-blue text-dark-blue" %}
+    {% set iconClasses = "stroke-sky-blue fill-dark-blue" %}
+  {% elseif variant == "light" %}
+    {% set colorClasses = "bg-light text-dark-blue" %}
+    {% set iconClasses = "stroke-light fill-dark-blue" %}
+  {% elseif variant == "light-green" %}
+    {% set colorClasses = "bg-light-green text-dark-green" %}
+    {% set iconClasses = "stroke-light-green fill-dark-green" %}
+  {% elseif variant == "dark-blue" %}
+    {% set colorClasses = "bg-dark-blue text-light" %}
+    {% set iconClasses = "stroke-dark-blue fill-light" %}
+  {% else %}
+    {% set colorClasses = "" %}
+  {% endif %}
+
+  <a href="{{ href }}" class="flex items-center group relative z-0">
+    <span class="w-full md:w-[163px] 3xl:w-[177px] h-14 3xl:h-[61px] text-[17px] {{ colorClasses }} flex items-center justify-center rounded-full">
+      {{ label }}
+    </span>
+    <div class="hidden md:flex size-14 3xl:size-[61px] items-center justify-center rounded-full {{ colorClasses }} -ml-14 3xl:ml-[-61px] relative -z-10 group-hover:ml-0 duration-300 ease-in-out">
+      <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M13.8594 0.486328C14.2803 0.104724 14.9696 0.10478 15.3906 0.486328L23.4932 7.83203C23.9025 8.20341 23.9025 8.79659 23.4932 9.16797L15.3906 16.5137C14.9696 16.8952 14.2803 16.8953 13.8594 16.5137C13.4497 16.1422 13.4497 15.5492 13.8594 15.1777L19.7881 9.80273L20.1719 9.4541H0.200195V7.5459H20.1719L19.7881 7.19727L13.8594 1.82227C13.4497 1.45083 13.4497 0.857767 13.8594 0.486328Z"
+          class="{{iconClasses}}"
+          stroke-width="0.7"
+        />
+      </svg>
+    </div>
+  </a>
+{% endmacro %}
+ 

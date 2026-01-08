@@ -1,0 +1,29 @@
+{# src/components/spacing.njk #}
+
+{% macro sectionTop(size="default") %}
+  {%- if size == "none" -%}
+    pt-0
+  {%- elseif size == "small" -%}
+    pt-10 lg:pt-20
+  {%- elseif size == "medium" -%}
+    pt-16 lg:pt-[6.25vw] 3xl:pt-[120px]
+  {%- elseif size == "large" -%}
+    pt-20 lg:pt-[8.3vw] 3xl:pt-[160px]
+  {%- else -%}
+    pt-20 lg:pt-[8.3vw] 3xl:pt-[160px]
+  {%- endif -%}
+{% endmacro %}
+
+{% macro sectionBottom(size="default") %}
+  {%- if size == "none" -%}
+    pb-0
+  {%- elseif size == "small" -%}
+    pb-10 lg:pb-20
+  {%- elseif size == "medium" -%}
+    pb-16 lg:pb-[6.25vw] 3xl:pb-[120px]
+  {%- elseif size == "large" -%}
+   pb-20 lg:pb-[8.3vw] 3xl:pb-[160px]
+  {%- else -%}
+    pb-20 lg:pb-[8.3vw] 3xl:pb-[160px]
+  {%- endif -%}
+{% endmacro %}

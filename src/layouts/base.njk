@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title or "Energy Bay" }}</title>
+    <link rel="shortcut icon" href="assets/images/svg/favicon.svg" />
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="font-sans antialiased bg-white text-dark-blue">
+    {% block header %}
+      {% include "components/header.njk" %}
+    {% endblock %}
+    
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <main class="overflow-hidden pt-20 xl:pt-[104px]">
+          {% block content %}{% endblock %}
+        </main>
+        {% block footer %}
+          {% include "components/footer.njk" %}
+        {% endblock %}
+      </div>
+    </div>
+
+    <!--  GSAP -->  
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <!-- Alpine Plugins -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <!-- Alpine Core -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Main JS -->
+    <script type="text/javascript" src="./assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+{% from "components/button.njk" import Button %}
+
+<header 
+  id="header"
+  @click.outside="showSearch = false"
+  data-animate-header 
+  x-data="{
+    showSearch: false,
+    showMobileMenu: false,
+
+  
+    init() {
+      const closeOnScroll = () => {
+        if (this.showSearch) this.showSearch = false
+      }
+  
+      window.addEventListener('scroll', closeOnScroll, { passive: true })
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          this.showSearch = false
+          this.showMobileMenu = false
+        }
+      })
+  
+      this.$watch('showMobileMenu', (val) => {
+        document.body.classList.toggle('overflow-hidden', val)
+      })
+    }
+  }"
+  class="fixed top-0 inset-x-0 z-20 bg-white text-dark-blue">
+  <div class="container">
+    <div class="flex justify-between gap-4 2xl:gap-8 items-center h-20 xl:h-[104px]">
+      <a href="./index.html">
+        <img class="w-[180px] 2xl:w-[13vw] 3xl:w-[251px]" width="261" height="37" src="./assets/images/svg/logo-dark.svg" alt="logo" />
+      </a>
+      <nav class="hidden xl:flex items-center text-[17px] gap-8 2xl:gap-11 3xl:gap-14">
+        <a href="#">Residential</a>
+        <a href="#">Business</a>
+      </nav>
+      <nav class="hidden xl:flex items-center text-[17px] gap-8 2xl:gap-11 3xl:gap-14 ml-auto">
+        <a href="#">About Us</a>
+        <a href="#">Help & Support</a>
+        <a href="#">Our Resources</a>
+      </nav>
+      <a href="#" class="hidden xl:flex items-center cursor-pointer gap-2.5 3xl:gap-3 text-base 3xl:text-[17px] leading-none duration-300 group whitespace-nowrap h-14 3xl:h-[61px] relative z-0
+              text-dark-blue hover:text-dark-green
+              after:-z-10 after:w-14 3xl:after:w-[61px] after:rounded-full after:h-full after:left-0 after:absolute after:duration-300
+              after:bg-light-green
+              hover:after:w-full">
+          <div class="size-14 3xl:size-[61px] flex items-center justify-center">
+            <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                class="fill-dark-green stroke-light-green"
+                stroke-width="0.7"
+                d="M11.626 0.556641C11.9015 0.280742 12.3485 0.280742 12.624 0.556641L19.3408 7.2832C19.6165 7.55926 19.6162 8.00699 19.3408 8.2832L12.624 15.0107C12.3485 15.2866 11.9015 15.2866 11.626 15.0107C11.3502 14.7346 11.3502 14.2859 11.626 14.0098L16.541 9.08789L17.1377 8.49023H0.349609V7.07617H17.1377L16.541 6.47949L11.626 1.55664C11.3507 1.28045 11.3504 0.832678 11.626 0.556641Z"
+              />
+            </svg>
+          </div>
+        <span class="duration-300 group-hover:-translate-x-4">My Acccount</span>
+      </a>
+      <div class="hidden xl:block relative group text-dark-green cursor-pointer w-full md:w-[12.4vw] 3xl:w-[238px] text-center z-20">
+        <div class="bg-light-green h-14 3xl:h-[61px] flex items-center justify-center rounded-t-[28px] rounded-b-[28px] group-hover:rounded-t-[28px] group-hover:rounded-b-[0] duration-300">Sign up</div>
+        <div class="bg-light-green w-full absolute -z-10 top-1/2 rounded-b-[28px] duration-600 max-h-0 group-hover:max-h-80 overflow-hidden">
+          <ul x-cloak class="pb-3 pt-6">
+            <li>
+              <a class="p-3 block" href="#">Make a Payment</a>
+            </li>
+            <li>
+              <a class="p-3 block" href="#">Your Meter</a>
+            </li>
+            <li>
+              <a class="p-3 block" href="#">Sign in / Sign up</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+
+      <div class="flex items-center gap-4">
+        <button @click="showSearch = !showSearch; showMobileMenu = false;" type="button" class="flex items-center gap-5 3xl:gap-6 text-[17px] cursor-pointer">
+          <img class="w-6 xl:w-[2.2vw] 3xl:w-[43px]" width="43" height="43" src="./assets/images/svg/search.svg" alt="search" />
+        </button>
+        <button @click="showMobileMenu = !showMobileMenu; showSearch = false;" type="button" class="flex xl:hidden items-center gap-5 3xl:gap-6 text-[17px] cursor-pointer">
+          <img class="w-6 xl:w-[2.2vw] 3xl:w-[43px]" width="43" height="43" src="./assets/images/svg/menu.svg" alt="menu" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Search -->
+  <div x-cloak x-collapse x-collapse.duration.500ms class="!ease-in-out" x-show="showSearch">
+    <div class="bg-light py-3 md:py-5">
+      <div class="container">
+        <div class="flex items-center h-14 md:h-[74px] gap-10 bg-white rounded-full overflow-hidden pr-6">
+          <input type="search" placeholder="What are you looking for?" class="placeholder:text-dark-blue text-dark-blue h-full flex-1 focus:outline-none px-6 md:px-11" />
+          <button @click="showSearch = false" type="button" class="cursor-pointer py-1">
+            <img class="w-6  3xl:w-[31px]" src="./assets/images/svg/close-search.svg" alt="close"/>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div x-cloak x-collapse x-collapse.duration.500ms class="!ease-in-out" x-show="showMobileMenu">
+    <div class="bg-light text-dark-blue border-t border-light">
+      <div class="container">
+        <nav class="flex flex-col xl:hidden items-center text-lg gap-6 h-[calc(100svh-80px)] justify-center">
+          <a href="#">Residential</a>
+          <a href="#">Business</a>
+          <a href="#">About Us</a>
+          <a href="#">Help & Support</a>
+          <a href="#">Our Resources</a>
+          <a href="#">Sustainability</a>
+          <a href="#">My Account</a>
+          <a href="#">Make a Payment</a>
+          <a href="#">Your Meter</a>
+          <a href="#">Sign in / Sign up</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

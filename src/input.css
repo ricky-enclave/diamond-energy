@@ -1,0 +1,140 @@
+@font-face {
+  font-family: "FK Grotesk Trial";
+  src: url("../fonts/FK-Grotesk-Trial/FKGroteskTrial-Regular.woff2") format("woff2"),
+       url("../fonts/FK-Grotesk-Trial/FKGroteskTrial-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FK Grotesk Trial";
+  src: url("../fonts/FK-Grotesk-Trial/FKGroteskTrial-Bold.woff2") format("woff2"),
+       url("../fonts/FK-Grotesk-Trial/FKGroteskTrial-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+ 
+@import "tailwindcss";
+
+html, body, .scrollbar {
+  scrollbar-width: thin;
+}
+
+@theme {
+    --font-sans: "FK Grotesk Trial", sans-serif;
+    --color-light: #F5F5F7;
+    --color-dark-blue: #002148;
+    --color-light-green: #C4F5B2;
+    --color-sky-blue: #AAD2FF;
+    --color-dark-green: #295E56;
+    
+    
+    --breakpoint-3xl: 1920px;
+    --breakpoint-2xl: 1536px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-md: 768px;
+    --breakpoint-md: 640px;
+
+    /* Container Settings */
+    --container-max-width: 1920px;
+    --container-padding-3xl: 100px;
+    --container-padding-2xl: 80px;
+    --container-padding-md: 40px;
+    --container-padding: 20px;
+
+    --radius-theme: 12px;
+    --radius-theme-lg: 20px;
+}
+ 
+
+@layer components {
+
+ [x-cloak] {
+  @apply !hidden;
+ } 
+ .container {
+   @apply mx-auto relative w-full !max-w-[var(--container-max-width)] px-[var(--container-padding)] md:px-[var(--container-padding-md)] 2xl:px-[var(--container-padding-2xl)] 3xl:px-[var(--container-padding-3xl)];
+ }
+
+ section {
+  @apply relative z-0
+ }
+ 
+ h1, .h1 {
+  @apply text-5xl lg:text-[5.2vw] 3xl:text-[100px] leading-none
+ }
+
+ h2, .h2 {
+  @apply text-4xl lg:text-[3.64vw] 3xl:text-[70px] leading-[1.1]
+ }
+
+ h3, .h3 {
+  @apply text-[24px] xl:text-[2.08vw] 3xl:text-[40px] leading-[1.125]
+ }
+
+ h4, .h4 {
+  @apply text-[22px] xl:text-2xl 3xl:text-[28px] leading-[1.25]
+ }
+
+ h5, .h5 {
+  @apply text-[19px] xl:text-xl 3xl:text-[22px] leading-[1.59]
+ }
+
+ p, .p, body {
+  @apply text-base xl:text-[17px] xl:leading-[1.47]
+ }
+
+ .heading {
+  @apply flex items-center justify-center border border-current min-w-[168px] 3xl:min-w-[226px] text-xl truncate md:text-2xl 3xl:text-[28px] leading-[1.45] h-14 3xl:h-[61px] rounded-full px-6 3xl:px-7
+ }
+
+ .stat {
+  @apply text-8xl lg:text-[9vw] 3xl:text-[180px] leading-none
+ }
+ 
+ .stat sup {
+  @apply text-4xl lg:text-[3.64vw] 3xl:text-[70px] leading-[1.1] -top-1/2
+ }
+
+ .stat-sm {
+  @apply text-4xl lg:text-[4.5vw] 3xl:text-[90px] leading-none
+ }
+ 
+ .stat-sm sup {
+  @apply text-3xl lg:text-[2.73vw] 3xl:text-[52px] leading-[1.1] -top-1/3
+ }
+
+
+ .testimonials {
+  @apply text-2xl lg:text-[2.3vw] 3xl:text-[45px] leading-[1.11]
+ }
+ 
+ .underline-area {
+  @apply relative z-0 after:-z-10 after:absolute after:bg-[url('../images/svg/underline.svg')] after:inset-x-0 after:h-4 after:bottom-0 md:after:bottom-1 xl:after:bottom-2 after:bg-contain after:bg-no-repeat after:bg-center
+ }
+
+ .mark-area {
+  @apply relative z-0 after:-z-10 after:absolute after:bg-[url('../images/svg/mark.svg')] after:-inset-x-3 after:top-0 after:-bottom-3 after:bg-contain after:bg-no-repeat after:bg-center
+ }
+
+
+ [data-animate-heading],
+[data-animate-paragraph],
+[data-animate-zoom-in],
+[data-animate-fade-up],
+[data-animate-line] {
+ @apply invisible
+}
+
+}
+
+
+ 
+
+
+ 
+ 
