@@ -1,0 +1,222 @@
+{# src/pages/index.njk #}
+{% extends "layouts/base.njk" %}
+{% set title = "Check Your Rate | Diamond Energy" %}
+
+{% from "components/button.njk" import Button %}
+{% from "components/spacing.njk" import sectionTop, sectionBottom %}
+
+
+{% block content %}
+
+
+<!-- Hero Section -->
+<section class="{{ sectionTop('large') }} {{ sectionBottom('large') }} bg-dark-green text-light-green">
+  <div class="container">
+    <div class="grid grid-cols-1 lg:grid-cols-[47fr_53fr] gap-10 md:gap-16 xl:gap-24 3xl:gap-35 items-center">
+      <div class="overflow-hidden rounded-theme lg:rounded-theme-lg aspect-731/668">
+        <img data-animate-zoom-in class="size-full object-cover" width="731" height="668" src="./assets/images/home/banner.png" alt="banner" />
+      </div>
+      <div class="flex flex-col xl:max-w-[43vw] 3xl:max-w-[837px] lg:py-14">
+        <h1 data-animate-fade-up class="h1"><span class="underline-area">Lorem</span> ipsum dolor sit <span class="mark-area">amet</span> consectetur.</h1> 
+        <div class="mt-8 xl:mt-[2.9vw] 3xl:mt-14 xl:max-w-[620px] flex flex-col gap-8 xl:gap-[2.9vw] 3xl:gap-14">
+          <p data-animate-fade-up>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doaoum eiusmod tempor idunt ut labore et dolore magna aliqua.</p>
+          <div class="w-full xl:max-w-[36.4vw] 3xl:max-w-[699px] flex flex-col md:items-start gap-5 lg:gap-7 3xl:gap-9">
+            <div data-animate-fade-up class="h4 w-full">
+              <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Enter Address">
+            </div>
+            <div data-animate-fade-up>
+              {{ Button("See Offers", "#", "light-green") }}
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+ 
+
+<!-- Supporting renewable energy Section -->
+<section class="{{ sectionTop('medium') }} {{ sectionBottom('none') }} text-dark-blue bg-light">
+  <div class="container">
+     <div class="flex flex-col gap-10 lg:gap-12 2xl:gap-16 3xl:gap-20">
+        <div class="grid grid-cols-1 lg:grid-cols-[4fr_6fr] gap-10 md:gap-12 lg:gap-[6vw] 3xl:gap-[120px] items-start">
+          <div class="flex flex-col items-start gap-10 lg:gap-12">
+            <div class="w-full rounded-theme lg:rounded-theme-lg overflow-hidden lg:h-[500px] xl:h-[30.2vw] 3xl:h-[580px]">
+              <img data-animate-zoom-in class="size-full object-cover" width="800" height="580" src="./assets/images/residential/offer.webp" alt="offer" />
+            </div>
+          </div>
+          <div class="flex flex-col gap-8 md:gap-10 lg:gap-12 3xl:gap-16 ">
+              <h2 data-animate-heading class="h2 xl:max-w-[733px]">Supporting renewable energy doesn’t have to cost you more.</h2>
+              <div data-animate-fade-up class="xl:max-w-[696px]">
+                <p>
+                  When making your choice about an electricity provider, consider these powerful tips:<br/><br/>
+                  <ol class="list-decimal pl-5">
+                    <li>Watch out for short term discounts and sign up bonuses. They may hide higher ongoing costs.</li>
+                    <li>Reference price comparisons can be useful, but your bill will differ based on actual usage.</li>
+                    <li>Comparison and switching sites have limitations, may recommend an unsuitable choice for you, especially if you have solar.</li>
+                    <li>Whole of bill discounts reduce your solar feed in credits.</li>
+                  </ol>
+<br/>
+We don’t use short-term discounts and sign up bonuses to make the comparison to the reference price look better.
+<br/><br/>
+When you join, our Australian based team can help ensure you are set up to enjoy ongoing discounts. We’re also available to provide feedback on how you can better use energy and tips to help you save even more.
+<br/><br/>
+Thr1ve®<br/>
+Our <a target="_blank" href="https://diamondenergy.com.au/thrive/" class="underline">referral program</a> rewards customers with ongoing disounts. Just refer one customer to get started. Refer more and keep getting additional discounts.
+                </p>
+              </div>
+          </div>
+        </div>
+     </div>
+  </div>
+</section>
+
+<!-- Virtual Power Plants (VPP) Section -->
+<section class="{{ sectionTop('large') }} {{ sectionBottom('none') }} text-dark-blue bg-light">
+  <div class="container">
+     <div class="flex flex-col gap-10 lg:gap-12 2xl:gap-16 3xl:gap-20">
+        <div class="grid grid-cols-1 lg:grid-cols-[4fr_6fr] gap-10 md:gap-12 lg:gap-[6vw] 3xl:gap-[120px] items-start">
+          <div class="flex flex-col gap-8 md:gap-10 lg:gap-12 3xl:gap-16">
+              <h2 data-animate-heading class="h2">Virtual Power Plants (VPP)</h2>
+              <div data-animate-fade-up class="xl:max-w-[696px] flex flex-col gap-8 md:gap-10">
+                <p>Thinking about installing solar and batteries? Find out about how you can join one of our VPP solutions and how they can help you save and support the transition to a fully renewable energy grid.</p>
+                <img width="250" height="58" src="./assets/images/home/green-power.png" />
+                  <p>GreenPower <br>
+                  Further support renewable energy with <a target="_blank" class="underline" href="https://diamondenergy.com.au/diamond-green-power/">GreenPower</a> sourced from one of the GreenPower accredited generators in our expanding <a target="_blank" class="underline" href="https://diamondenergy.com.au/our-generation/">portfolio</a>.</p>
+              </div>
+          </div>
+          <div class="flex flex-col items-start gap-10 lg:gap-12">
+            <div class="w-full rounded-theme lg:rounded-theme-lg overflow-hidden lg:h-[500px] xl:h-[30.2vw] 3xl:h-[580px]">
+              <img data-animate-zoom-in class="size-full object-cover" width="800" height="580" src="./assets/images/residential/sustainability.webp" alt="sustainability" />
+            </div>
+          </div>
+        </div>
+     </div>
+  </div>
+</section>
+
+ <!-- Make the Switch Section -->
+<section class="{{ sectionTop('large') }} {{ sectionBottom('large') }} text-dark-blue bg-light">
+  <div class="container">
+     <div class="flex flex-col gap-10 lg:gap-12 2xl:gap-16 3xl:gap-20">
+        <div class="grid grid-cols-1 lg:grid-cols-[4fr_6fr] gap-10 md:gap-12 lg:gap-[6vw] 3xl:gap-[120px] items-start">
+          <div class="flex flex-col items-start gap-10 lg:gap-12">
+            <div data-animate-fade-up class="heading">Make the Switch</div>
+            <div class="w-full rounded-theme lg:rounded-theme-lg overflow-hidden lg:h-[500px] xl:h-[30.2vw] 3xl:h-[580px]">
+              <img data-animate-zoom-in class="size-full object-cover" width="800" height="580" src="./assets/images/residential/offer.webp" alt="offer" />
+            </div>
+          </div>
+          <div class="flex flex-col gap-8 md:gap-10 lg:gap-12 3xl:gap-16 ">
+              <h2 data-animate-heading class="h2 xl:max-w-[733px]">Switch and support renewable energy.</h2>
+              <div data-animate-fade-up class="xl:max-w-[696px]">
+                <p>
+                You can support a greener and cleaner future.
+
+                <br/><br/>
+We are excited to work with Repower Mornington Peninsula to help encourage their vision in supporting decarbonisation of the community.
+<br/><br/>
+Strong renewable energy credentials<br/>
+<ul class="ul">
+  <li>Top rated in Green Electricity Guide 2022*</li>
+  <li>Own and operate our renewable generators with no interest in coal generation</li>
+  <li>Source more electricity from renewable generators than our customers consume</li>
+  <li>Go beyond carbon neutral… from our first customer we have offset most of their everyday carbon emissions^.</li>
+</ul>
+
+
+
+
+<br/>
+Competitive offers and great local service<br/>
+<ul class="ul">
+  <li>Electricity offers with discounts and feed in rates that deliver lower costs than the government regulated reference prices.</li>
+  <li>Highly rated customer service** from Australian based team</li>
+  <li>MyAccount portal to access usage data</li>
+</ul>
+
+
+
+</p>
+              </div>
+              <div data-animate-fade-up>
+                {{ Button("Make The Swich", "#", "light-green") }}
+              </div>
+          </div>
+        </div>
+     </div>
+  </div>
+</section>
+
+ 
+
+<!-- Start the process today Section -->
+<section class="{{ sectionTop('none') }} {{ sectionBottom('none') }} bg-light text-dark-blue">
+    <div class="container">
+      <div class="flex flex-col">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-7">
+          <div data-animate-fade-up class="bg-light-green rounded-b-theme lg:rounded-b-none rounded-t-theme lg:rounded-t-theme-lg px-6 xl:px-10 pt-8 xl:pt-10 pb-12 flex flex-col gap-4">
+            <div  class="flex items-center justify-between">
+              <div class="h4">Help & Support</div>
+              <a
+                href="#"
+                class="shrink-0 bg-dark-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group"
+              >
+                <svg class="group-hover:rotate-45 duration-300" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.40388 1.2202C4.40346 0.739275 4.79303 0.349709 5.27395 0.350129L16.2631 0.359797C16.7445 0.360217 17.1355 0.751228 17.1359 1.23263L17.1456 12.2218C17.146 12.7027 16.7565 13.0923 16.2755 13.0919C15.7944 13.0912 15.404 12.7008 15.4034 12.2197L15.3965 4.17776L15.3958 3.33324L1.72806 17.001L0.494769 15.7677L14.1625 2.09994L13.318 2.09925L5.27603 2.09235C4.79494 2.0917 4.4045 1.7013 4.40388 1.2202Z" fill="#F5F5F7" stroke="#295E56" stroke-width="0.7"/>
+                </svg>  
+              </a>
+            </div>
+          </div>
+
+          <div data-animate-fade-up class="bg-light-green rounded-b-theme lg:rounded-b-none rounded-t-theme lg:rounded-t-theme-lg px-6 xl:px-10 pt-8 xl:pt-10 pb-12 flex flex-col gap-4">
+            <div  class="flex items-center justify-between">
+              <div class="h4">Business Queries</div>
+              <a
+                href="#"
+                class="shrink-0 bg-dark-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group"
+              >
+                <svg class="group-hover:rotate-45 duration-300" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.40388 1.2202C4.40346 0.739275 4.79303 0.349709 5.27395 0.350129L16.2631 0.359797C16.7445 0.360217 17.1355 0.751228 17.1359 1.23263L17.1456 12.2218C17.146 12.7027 16.7565 13.0923 16.2755 13.0919C15.7944 13.0912 15.404 12.7008 15.4034 12.2197L15.3965 4.17776L15.3958 3.33324L1.72806 17.001L0.494769 15.7677L14.1625 2.09994L13.318 2.09925L5.27603 2.09235C4.79494 2.0917 4.4045 1.7013 4.40388 1.2202Z" fill="#F5F5F7" stroke="#295E56" stroke-width="0.7"/>
+                </svg>  
+              </a>
+            </div>
+          </div>
+
+          <div data-animate-fade-up class="bg-light-green rounded-b-theme lg:rounded-b-none rounded-t-theme lg:rounded-t-theme-lg px-6 xl:px-10 pt-8 xl:pt-10 pb-12 flex flex-col gap-4">
+            <div  class="flex items-center justify-between">
+              <div class="h4">Faults and Outages</div>
+              <a
+                href="#"
+                class="shrink-0 bg-dark-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group"
+              >
+                <svg class="group-hover:rotate-45 duration-300" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.40388 1.2202C4.40346 0.739275 4.79303 0.349709 5.27395 0.350129L16.2631 0.359797C16.7445 0.360217 17.1355 0.751228 17.1359 1.23263L17.1456 12.2218C17.146 12.7027 16.7565 13.0923 16.2755 13.0919C15.7944 13.0912 15.404 12.7008 15.4034 12.2197L15.3965 4.17776L15.3958 3.33324L1.72806 17.001L0.494769 15.7677L14.1625 2.09994L13.318 2.09925L5.27603 2.09235C4.79494 2.0917 4.4045 1.7013 4.40388 1.2202Z" fill="#F5F5F7" stroke="#295E56" stroke-width="0.7"/>
+                </svg>  
+              </a>
+            </div>
+          </div>
+
+          <div data-animate-fade-up class="bg-light-green rounded-b-theme lg:rounded-b-none rounded-t-theme lg:rounded-t-theme-lg px-6 xl:px-10 pt-8 xl:pt-10 pb-12 flex flex-col gap-4">
+            <div  class="flex items-center justify-between">
+              <div class="h4">Contact Us</div>
+              <a
+                href="#"
+                class="shrink-0 bg-dark-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group"
+              >
+                <svg class="group-hover:rotate-45 duration-300" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.40388 1.2202C4.40346 0.739275 4.79303 0.349709 5.27395 0.350129L16.2631 0.359797C16.7445 0.360217 17.1355 0.751228 17.1359 1.23263L17.1456 12.2218C17.146 12.7027 16.7565 13.0923 16.2755 13.0919C15.7944 13.0912 15.404 12.7008 15.4034 12.2197L15.3965 4.17776L15.3958 3.33324L1.72806 17.001L0.494769 15.7677L14.1625 2.09994L13.318 2.09925L5.27603 2.09235C4.79494 2.0917 4.4045 1.7013 4.40388 1.2202Z" fill="#F5F5F7" stroke="#295E56" stroke-width="0.7"/>
+                </svg>  
+              </a>
+            </div>
+          </div>
+ 
+        </div>
+      </div>
+    </div>
+</section>
+
+{% endblock %}
+ 
