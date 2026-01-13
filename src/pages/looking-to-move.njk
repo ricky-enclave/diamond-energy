@@ -1,6 +1,6 @@
 {# src/pages/index.njk #}
 {% extends "layouts/base.njk" %}
-{% set title = "Make the Switch | Diamond Energy" %}
+{% set title = "Looking to Move | Diamond Energy" %}
 
 {% from "components/button.njk" import Button %}
 {% from "components/spacing.njk" import sectionTop, sectionBottom %}
@@ -12,43 +12,24 @@
 <section class="{{ sectionTop('large') }} {{ sectionBottom('none') }} bg-light text-dark-blue">
   <div class="container">
     <div class="flex flex-col gap-8 md:gap-12 xl:gap-16">
-      <h1 data-animate-heading class="title">Make the Switch for Good</h1> 
-      <p data-animate-fade-up>
-        By completing the online sign-up form below.
-        <br/><br/>
-        Get ready with your identification (eg. drivers licence).</p>
+      <h1 data-animate-heading class="title">Looking to Move?</h1> 
+      <p data-animate-fade-up class="max-w-[699px]">
+        Complete this form to close your current Diamond Energy account. You can also set up an electricity account for your new address.</p>
         <form action="" class="flex flex-col gap-8 md:gap-10 items-start max-w-[845px]">
             <div data-animate-fade-up class="flex flex-col gap-5 w-full">
-              <p>Set up Residential or Business Account?*</p>
-              <label class="flex items-center gap-8 cursor-pointer" for="residential">
-                <input class="hidden peer" type="radio" name="business-account" id="residential">
-                <span class="size-7 rounded-full bg-light-green peer-checked:bg-dark-green"></span>
-                <p>Residential</p>
-              </label>
-              <label class="flex items-center gap-8 cursor-pointer" for="business">
-                <input class="hidden peer" type="radio" name="business-account" id="business">
-                <span class="size-7 rounded-full bg-light-green peer-checked:bg-dark-green"></span>
-                <p>Business</p>
-              </label>
+              <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Full Name*">
+              <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Diamond Energy Account Number">
+            </div>
+         
+            <div data-animate-fade-up class="flex flex-col gap-5 w-full">
+              <p>Not mandatory, but helpful</p>
+              <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Primary Contact Number*">
             </div>
 
             <div data-animate-fade-up class="flex flex-col gap-5 w-full">
-              <p>What would you like to do?*</p>
-              <label class="flex items-center gap-8 cursor-pointer" for="current-address">
-                <input class="hidden peer" type="radio" name="like-to-do" id="current-address">
-                <span class="size-7 rounded-full bg-light-green peer-checked:bg-dark-green"></span>
-                <p>Join us at current address</p>
-              </label>
-              <label class="flex items-center gap-8 cursor-pointer" for="new-address">
-                <input class="hidden peer" type="radio" name="like-to-do" id="new-address">
-                <span class="size-7 rounded-full bg-light-green peer-checked:bg-dark-green"></span>
-                <p>Moving in (set up for new address)</p>
-              </label>
-            </div>
-
-            <div data-animate-fade-up class="flex flex-col gap-5 w-full">
-              <p>Search your Supply Address*</p>
-              <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Start typing in address.....">
+              <p>Supply Address of property you are moving out of*</p>
+              <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Street Address Line 1">
+              <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Street Address Line 2">
               <div class="grid grid-cols-1 gap-x-8 gap-y-5 lg:grid-cols-3">
                 <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="City">
                 <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="State">
@@ -57,8 +38,40 @@
             </div>
 
             <div data-animate-fade-up class="flex flex-col gap-5 w-full">
-              <p>Do you know the Supply Address NMI?</p>
-              <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="10-11 digits from electricity bill">
+              <p>When would you like power to be turned off at this address?</p>
+              <input type="date" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="dd/mm/yyyy">
+            </div>
+
+            <div data-animate-fade-up class="flex flex-col gap-5 w-full">
+              <p>Is your electricity meter / switchboard accessible for a final meter reading?*</p>
+              <div class="flex items-center gap-15">
+                <label class="flex items-center gap-8 cursor-pointer" for="final-meter-yes">
+                  <input class="hidden peer" type="radio" name="final-meter" id="final-meter-yes">
+                  <span class="size-7 rounded-full bg-light-green peer-checked:bg-dark-green"></span>
+                  <p>Yes</p>
+                </label>
+                <label class="flex items-center gap-8 cursor-pointer" for="final-meter-no">
+                  <input class="hidden peer" type="radio" name="final-meter" id="final-meter-no">
+                  <span class="size-7 rounded-full bg-light-green peer-checked:bg-dark-green"></span>
+                  <p>No</p>
+                </label>
+              </div>
+            </div>
+
+            <div data-animate-fade-up class="flex flex-col gap-5 w-full">
+              <p>Is Life Support registered at the property you are moving out of?*</p>
+              <div class="flex items-center gap-15">
+                <label class="flex items-center gap-8 cursor-pointer" for="life-support-yes">
+                  <input class="hidden peer" type="radio" name="life-support" id="life-support-yes">
+                  <span class="size-7 rounded-full bg-light-green peer-checked:bg-dark-green"></span>
+                  <p>Yes</p>
+                </label>
+                <label class="flex items-center gap-8 cursor-pointer" for="life-support-no">
+                  <input class="hidden peer" type="radio" name="life-support" id="life-support-no">
+                  <span class="size-7 rounded-full bg-light-green peer-checked:bg-dark-green"></span>
+                  <p>No</p>
+                </label>
+              </div>
             </div>
 
             <div data-animate-fade-up>
