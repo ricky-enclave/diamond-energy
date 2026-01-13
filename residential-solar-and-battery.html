@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Residential - Solar &amp; Battery | Diamond Energy</title>
+    <link rel="shortcut icon" href="assets/images/svg/favicon.svg">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link href="./assets/css/style.css" rel="stylesheet">
+  </head>
+  <body class="font-sans antialiased bg-white text-dark-blue">
+    
+      
+
+<header id="header" @click.outside="showSearch = false" data-animate-header x-data="{
+    showSearch: false,
+    showMobileMenu: false,
+
+  
+    init() {
+      const closeOnScroll = () => {
+        if (this.showSearch) this.showSearch = false
+      }
+  
+      window.addEventListener('scroll', closeOnScroll, { passive: true })
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          this.showSearch = false
+          this.showMobileMenu = false
+        }
+      })
+  
+      this.$watch('showMobileMenu', (val) => {
+        document.body.classList.toggle('overflow-hidden', val)
+      })
+    }
+  }" class="fixed top-0 inset-x-0 z-20 bg-white text-dark-blue">
+  <div class="container">
+    <div class="flex justify-between gap-4 2xl:gap-8 items-center h-20 xl:h-[104px]">
+      <a href="./index.html">
+        <img class="w-[180px] 2xl:w-[13vw] 3xl:w-[251px]" width="261" height="37" src="./assets/images/svg/logo-dark.svg" alt="logo">
+      </a>
+      <nav class="hidden xl:flex items-center text-[17px] gap-8 2xl:gap-11 3xl:gap-14">
+        <a href="#">Residential</a>
+        <a href="#">Business</a>
+      </nav>
+      <nav class="hidden xl:flex items-center text-[17px] gap-8 2xl:gap-11 3xl:gap-14 ml-auto">
+        <a href="#">About Us</a>
+        <a href="#">Help & Support</a>
+        <a href="#">Our Resources</a>
+      </nav>
+      <a href="#" class="hidden xl:flex items-center cursor-pointer gap-2.5 3xl:gap-3 text-base 3xl:text-[17px] leading-none duration-300 group whitespace-nowrap h-14 3xl:h-[61px] relative z-0 text-dark-blue hover:text-dark-green after:-z-10 after:w-14 3xl:after:w-[61px] after:rounded-full after:h-full after:left-0 after:absolute after:duration-300 after:bg-light-green hover:after:w-full">
+          <div class="size-14 3xl:size-[61px] flex items-center justify-center">
+            <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path class="fill-dark-green stroke-light-green" stroke-width="0.7" d="M11.626 0.556641C11.9015 0.280742 12.3485 0.280742 12.624 0.556641L19.3408 7.2832C19.6165 7.55926 19.6162 8.00699 19.3408 8.2832L12.624 15.0107C12.3485 15.2866 11.9015 15.2866 11.626 15.0107C11.3502 14.7346 11.3502 14.2859 11.626 14.0098L16.541 9.08789L17.1377 8.49023H0.349609V7.07617H17.1377L16.541 6.47949L11.626 1.55664C11.3507 1.28045 11.3504 0.832678 11.626 0.556641Z"/>
+            </svg>
+          </div>
+        <span class="duration-300 group-hover:-translate-x-4">My Acccount</span>
+      </a>
+      <div class="hidden xl:block relative group text-dark-green cursor-pointer w-full md:w-[12.4vw] 3xl:w-[238px] text-center z-20">
+        <div class="bg-light-green h-14 3xl:h-[61px] flex items-center justify-center rounded-t-[28px] rounded-b-[28px] group-hover:rounded-t-[28px] group-hover:rounded-b-[0] duration-300">Sign up</div>
+        <div class="bg-light-green w-full absolute -z-10 top-1/2 rounded-b-[28px] duration-600 max-h-0 group-hover:max-h-80 overflow-hidden">
+          <ul x-cloak class="pb-3 pt-6">
+            <li>
+              <a class="p-3 block" href="#">Make a Payment</a>
+            </li>
+            <li>
+              <a class="p-3 block" href="#">Your Meter</a>
+            </li>
+            <li>
+              <a class="p-3 block" href="#">Sign in / Sign up</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+
+      <div class="flex items-center gap-4">
+        <button @click="showSearch = !showSearch; showMobileMenu = false;" type="button" class="flex items-center gap-5 3xl:gap-6 text-[17px] cursor-pointer">
+          <img class="w-6 xl:w-[2.2vw] 3xl:w-[43px]" width="43" height="43" src="./assets/images/svg/search.svg" alt="search">
+        </button>
+        <button @click="showMobileMenu = !showMobileMenu; showSearch = false;" type="button" class="flex xl:hidden items-center gap-5 3xl:gap-6 text-[17px] cursor-pointer">
+          <img class="w-6 xl:w-[2.2vw] 3xl:w-[43px]" width="43" height="43" src="./assets/images/svg/menu.svg" alt="menu">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Search -->
+  <div x-cloak x-collapse x-collapse.duration.500ms class="!ease-in-out" x-show="showSearch">
+    <div class="bg-light py-3 md:py-5">
+      <div class="container">
+        <div class="flex items-center h-14 md:h-[74px] gap-10 bg-white rounded-full overflow-hidden pr-6">
+          <input type="search" placeholder="What are you looking for?" class="placeholder:text-dark-blue text-dark-blue h-full flex-1 focus:outline-none px-6 md:px-11">
+          <button @click="showSearch = false" type="button" class="cursor-pointer py-1">
+            <img class="w-6 3xl:w-[31px]" src="./assets/images/svg/close-search.svg" alt="close">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div x-cloak x-collapse x-collapse.duration.500ms class="!ease-in-out" x-show="showMobileMenu">
+    <div class="bg-light text-dark-blue border-t border-light">
+      <div class="container">
+        <nav class="flex flex-col xl:hidden items-center text-lg gap-6 h-[calc(100svh-80px)] justify-center">
+          <a href="#">Residential</a>
+          <a href="#">Business</a>
+          <a href="#">About Us</a>
+          <a href="#">Help & Support</a>
+          <a href="#">Our Resources</a>
+          <a href="#">Sustainability</a>
+          <a href="#">My Account</a>
+          <a href="#">Make a Payment</a>
+          <a href="#">Your Meter</a>
+          <a href="#">Sign in / Sign up</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+    
+    
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <main class="overflow-hidden pt-20 xl:pt-[104px]">
+          
+
+
+<!-- Hero Section -->
+<section class="pt-20 lg:pt-[8.3vw] 3xl:pt-[160px] pb-20 lg:pb-[8.3vw] 3xl:pb-[160px] bg-dark-green text-light-green">
+  <div class="container">
+    <div class="grid grid-cols-1 lg:grid-cols-[47fr_53fr] gap-10 md:gap-16 xl:gap-24 3xl:gap-35 items-center">
+      <div class="flex flex-col xl:max-w-[43vw] 3xl:max-w-[837px] lg:py-14">
+        <h1 data-animate-fade-up class="h1"><span class="underline-area">Lorem</span> ipsum dolor sit <span class="mark-area">amet</span> consectetur.</h1> 
+        <div class="mt-8 xl:mt-[2.9vw] 3xl:mt-14 xl:max-w-[620px] flex flex-col gap-4 md:gap-6">
+          <p data-animate-fade-up>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doaoum eiusmod tempor idunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+      <div class="overflow-hidden rounded-theme lg:rounded-theme-lg aspect-846/668">
+        <img data-animate-zoom-in class="size-full object-cover" width="846" height="668" src="./assets/images/home/banner.png" alt="banner">
+      </div>
+    </div>
+  </div>
+</section>
+
+ 
+
+<!-- Add on VPP Section -->
+<section class="pt-16 lg:pt-[6.25vw] 3xl:pt-[120px] pb-16 lg:pb-[6.25vw] 3xl:pb-[120px] text-dark-blue bg-light">
+  <div class="container">
+     <div class="flex flex-col gap-10 lg:gap-12 2xl:gap-16 3xl:gap-20">
+        <div class="grid grid-cols-1 lg:grid-cols-[4fr_6fr] gap-10 md:gap-12 lg:gap-[6vw] 3xl:gap-[120px] items-start">
+          <div class="flex flex-col items-start gap-10 lg:gap-12">
+            <div data-animate-fade-up class="heading">Add on VPP</div>
+            <div class="w-full rounded-theme lg:rounded-theme-lg overflow-hidden lg:h-[500px] xl:h-[30.2vw] 3xl:h-[580px]">
+              <img data-animate-zoom-in class="size-full object-cover" width="800" height="580" src="./assets/images/residential/offer.webp" alt="offer">
+            </div>
+          </div>
+          <div class="flex flex-col gap-8 md:gap-10 lg:gap-12 3xl:gap-16">
+              <h2 data-animate-heading class="h2 xl:max-w-[733px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+              <div data-animate-paragraph class="xl:max-w-[696px]">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doaoum eiusmod tem
+                  por idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doaoum eiusmod tempor idunt ut labore et dolore magna aliqua.
+                  <br><br>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doaoum eiusmod tem
+                  por idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doaoum eiusmod tempor idunt ut labore et dolore magna aliqua..</p>
+              </div>
+          </div>
+        </div>
+     </div>
+  </div>
+</section>
+ 
+<!-- How Does VPP Work? Section -->
+<section class="pt-16 lg:pt-[6.25vw] 3xl:pt-[120px] pb-0 bg-sky-blue text-dark-blue">
+  <div class="container">
+    <div class="flex flex-col gap-10 md:gap-12 lg:gap-14 xl:gap-16 2xl:gap-20 3xl:gap-24">
+     <div class="grid gap-8 lg:gap-10 2xl:gap-0 2xl:grid-cols-[auto_66vw] 3xl:grid-cols-[auto_1280px]">
+        <div class="flex justify-start">
+          <div data-animate-fade-up class="heading">How Does VPP Work?</div>
+        </div>       
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 lg:gap-8">
+        <a data-animate-fade-up href="#" class="flex flex-col gap-4 group">
+          <div class="w-full aspect-407/290 rounded-theme lg:rounded-theme-lg overflow-hidden">
+            <img class="object-cover size-full scale-110 group-hover:scale-100 duration-700" width="407" height="289" src="./assets/images/home/blog-1.png" alt="community-energy-networks">
+          </div>
+          <h4 class="line-clamp-1 mt-2">Share Your Stored Energy</h4>
+          <p class="line-clamp-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doaoum eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+        </a>
+        <a data-animate-fade-up href="#" class="flex flex-col gap-4 group">
+          <div class="w-full aspect-407/290 rounded-theme lg:rounded-theme-lg overflow-hidden">
+            <img class="object-cover size-full scale-110 group-hover:scale-100 duration-700" width="407" height="289" src="./assets/images/home/blog-2.png" alt="community-energy-networks">
+          </div>
+          <h4 class="line-clamp-1 mt-2">Earn Credits and Savings</h4>
+          <p class="line-clamp-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doaoum eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+        </a>
+        <a data-animate-fade-up href="#" class="flex flex-col gap-4 group">
+          <div class="w-full aspect-407/290 rounded-theme lg:rounded-theme-lg overflow-hidden">
+            <img class="object-cover size-full scale-110 group-hover:scale-100 duration-700" width="407" height="289" src="./assets/images/home/offering/power-purchase-agreements.jpg" alt="community-energy-networks">
+          </div>
+          <h4 class="line-clamp-1 mt-2">Stay in Control</h4>
+          <p class="line-clamp-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doaoum eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+        </a>
+        <a data-animate-fade-up href="#" class="flex flex-col gap-4 group">
+          <div class="w-full aspect-407/290 rounded-theme lg:rounded-theme-lg overflow-hidden">
+            <img class="object-cover size-full scale-110 group-hover:scale-100 duration-700" width="407" height="289" src="./assets/images/home/offering/embedded-networks.jpg" alt="community-energy-networks">
+          </div>
+          <h4 class="line-clamp-1 mt-2">Support Renewables</h4>
+          <p class="line-clamp-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doaoum eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+        </a>
+      </div>
+     </div>
+  </div>
+</section>
+
+
+<!-- Check Your Rates Section -->
+<section class="pt-20 lg:pt-[8.3vw] 3xl:pt-[160px] pb-0 bg-sky-blue text-dark-blue">
+  <div class="container">
+     <div class="flex flex-col gap-10 lg:gap-12 2xl:gap-16 3xl:gap-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-[6vw] 3xl:gap-[120px] items-start">
+          <div class="flex flex-col items-start gap-10 lg:gap-12">
+            <div class="w-full xl:max-w-[36.4vw] 3xl:max-w-[699px] flex flex-col md:items-start gap-5 lg:gap-7 3xl:gap-9">
+              <div data-animate-fade-up class="h4 w-full">
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Enter Address">
+              </div>
+              <div data-animate-fade-up>
+                
+  
+    
+    
+  
+
+  <a href="#" class="flex items-center group relative z-0">
+    <span class="w-full md:w-[163px] 3xl:w-[177px] h-14 3xl:h-[61px] text-[17px] bg-dark-blue text-light flex items-center justify-center rounded-full">
+      See Offers
+    </span>
+    <div class="hidden md:flex size-14 3xl:size-[61px] items-center justify-center rounded-full bg-dark-blue text-light -ml-14 3xl:ml-[-61px] relative -z-10 group-hover:ml-0 duration-300 ease-in-out">
+      <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.8594 0.486328C14.2803 0.104724 14.9696 0.10478 15.3906 0.486328L23.4932 7.83203C23.9025 8.20341 23.9025 8.79659 23.4932 9.16797L15.3906 16.5137C14.9696 16.8952 14.2803 16.8953 13.8594 16.5137C13.4497 16.1422 13.4497 15.5492 13.8594 15.1777L19.7881 9.80273L20.1719 9.4541H0.200195V7.5459H20.1719L19.7881 7.19727L13.8594 1.82227C13.4497 1.45083 13.4497 0.857767 13.8594 0.486328Z" class="stroke-dark-blue fill-light" stroke-width="0.7"/>
+      </svg>
+    </div>
+  </a>
+
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-8 md:gap-10 lg:gap-12 3xl:gap-16">
+              <h2 data-animate-heading class="h2 xl:max-w-[733px]">Check Your Rates.</h2>
+              <div data-animate-paragraph class="xl:max-w-[696px]">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doaoum eiusmod tem
+                  por idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doaoum eiusmod tempor idunt ut labore et dolore magna aliqua.</p>
+              </div>
+          </div>
+        </div>
+     </div>
+  </div>
+</section>
+
+ <!-- Why Choose Us Section -->
+<section class="pt-20 lg:pt-[8.3vw] 3xl:pt-[160px] pb-16 lg:pb-[6.25vw] 3xl:pb-[120px] bg-sky-blue text-dark-blue">
+  <div class="container">
+     <div class="flex flex-col gap-10 lg:gap-12 2xl:gap-16 3xl:gap-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-[6vw] 3xl:gap-[120px] items-start">
+          <div class="flex flex-col gap-8 md:gap-10 lg:gap-12 3xl:gap-16">
+              <h2 data-animate-heading class="h2">Why Choose Us</h2>
+              <div data-animate-fade-up="" class="xl:max-w-[696px]">
+               <p> Our solar friendly electricity offers are simple and help customers maximise solar savings today and into the future.
+                <br><br>
+                Our solar friendly offers include:
+                </p><ul class="ul">
+                  <li>3.00 c/kWh across SA, NSW and QLD</li>
+                  <li>5.2 c/kWh across VIC (Rates Under Review, which may be updated on 1st August 2025)</li>
+                  <li>same prices and discounts on charges for all customers</li>
+                  <li>discounts that are ongoing and do not disappear after a defined “benefit period”</li>
+                  <li>discounts off usage and supply charges (instead of whole bill). This avoids penalisingsolar customers by discounting feed in credits.</li>
+                  <li>automatic payout of credits every quarter with no administration cost</li>
+                </ul>
+                <br>
+                We provide a range of tips to help clients with solar make choose the right retailer – see here.
+                <br><br>
+                Clients that already have solar can get even more out of their solar investment with our tailored tips for solar customers on how to further save energy and save on their bill – see here.
+                <br><br>
+                You can also find out about our VPP partner solutions and how they can help you save whilst also helping transition to a fully renewable energy grid.<p></p>
+              </div>
+          </div>
+          <div class="flex flex-col items-start gap-10 lg:gap-12">
+            <div class="w-full rounded-theme lg:rounded-theme-lg overflow-hidden lg:h-[500px] xl:h-[30.2vw] 3xl:h-[580px]">
+              <img data-animate-zoom-in class="size-full object-cover" width="800" height="580" src="./assets/images/residential/sustainability.webp" alt="sustainability">
+            </div>
+          </div>
+        </div>
+     </div>
+  </div>
+</section>
+
+ <!-- FAQs Section -->
+ <section class="pt-16 lg:pt-[6.25vw] 3xl:pt-[120px] pb-0 bg-light text-dark-blue">
+  <div class="container">
+     <div class="flex flex-col gap-10 lg:gap-12 2xl:gap-16 3xl:gap-20">
+        <div class="grid grid-cols-1 lg:grid-cols-[36fr_64fr] gap-10 md:gap-12 lg:gap-[6vw] 3xl:gap-[120px] items-start">
+            <div class="flex flex-col gap-8 md:gap-10 lg:gap-12 3xl:gap-16">
+                <h2 data-animate-heading class="h2">Frequently asked questions that you might need answers too.</h2>
+                <div data-animate-fade-up="" class="xl:max-w-[537px]">
+                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doaoum eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                </div>
+            </div>
+            <div x-data="{ open: null }" class="w-full flex flex-col relative">
+              <!-- Line for animation -->
+              <div data-animate-line class="h-px top-0 left-0 w-full bg-current absolute"></div>
+              <!-- FAQ ITEM 1 -->
+              <div class="relative py-5">
+                <div class="flex items-center justify-between gap-5">
+                 <p data-animate-fade-up>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor?</p> 
+                 <button @click="open === 0 ? open = null : open = 0" data-animate-fade-up type="button" class="bg-light-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group shrink-0">
+                  <svg class="duration-300" :class="open === 0 ? 'rotate-90' : 'group-hover:rotate-90'" width="23" height="18" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.4004 0.605469C13.7402 0.265105 14.2911 0.265105 14.6309 0.605469L22.3945 8.38281C22.7346 8.72351 22.7346 9.27649 22.3945 9.61719L14.6309 17.3945C14.2911 17.7349 13.7402 17.7349 13.4004 17.3945C13.0606 17.0539 13.0607 16.5018 13.4004 16.1611L19.082 10.4697L19.6787 9.87207H0.349609V8.12793H19.6787L19.082 7.53027L13.4004 1.83887C13.0607 1.49823 13.0606 0.946093 13.4004 0.605469Z" fill="#002148" stroke="#C4F5B2" stroke-width="0.7"/>
+                  </svg>   
+                </button>
+                </div>
+                <div x-show="open === 0" x-collapse>
+                  <p data-animate-fade-up class="lg:max-w-[787px] py-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.</p>
+                </div>
+                <!-- Line for animation -->
+                <div data-animate-line class="h-px bottom-0 left-0 w-full bg-current absolute"></div>
+              </div>
+              <!-- FAQ ITEM 2 -->
+              <div class="relative py-5">
+                <div class="flex items-center justify-between gap-5">
+                 <p data-animate-fade-up>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor?</p> 
+                 <button @click="open === 1 ? open = null : open = 1" data-animate-fade-up type="button" class="bg-light-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group shrink-0">
+                  <svg class="duration-300" :class="open === 1 ? 'rotate-90' : 'group-hover:rotate-90'" width="23" height="18" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.4004 0.605469C13.7402 0.265105 14.2911 0.265105 14.6309 0.605469L22.3945 8.38281C22.7346 8.72351 22.7346 9.27649 22.3945 9.61719L14.6309 17.3945C14.2911 17.7349 13.7402 17.7349 13.4004 17.3945C13.0606 17.0539 13.0607 16.5018 13.4004 16.1611L19.082 10.4697L19.6787 9.87207H0.349609V8.12793H19.6787L19.082 7.53027L13.4004 1.83887C13.0607 1.49823 13.0606 0.946093 13.4004 0.605469Z" fill="#002148" stroke="#C4F5B2" stroke-width="0.7"/>
+                  </svg>   
+                </button>
+                </div>
+                <div x-show="open === 1" x-collapse>
+                  <p data-animate-fade-up class="lg:max-w-[787px] py-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.</p>
+                </div>
+                <!-- Line for animation -->
+                <div data-animate-line class="h-px bottom-0 left-0 w-full bg-current absolute"></div>
+              </div>
+              <!-- FAQ ITEM 3 -->
+              <div class="relative py-5">
+                <div class="flex items-center justify-between gap-5">
+                 <p data-animate-fade-up>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor?</p> 
+                 <button @click="open === 2 ? open = null : open = 2" data-animate-fade-up type="button" class="bg-light-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group shrink-0">
+                  <svg class="duration-300" :class="open === 2 ? 'rotate-90' : 'group-hover:rotate-90'" width="23" height="18" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.4004 0.605469C13.7402 0.265105 14.2911 0.265105 14.6309 0.605469L22.3945 8.38281C22.7346 8.72351 22.7346 9.27649 22.3945 9.61719L14.6309 17.3945C14.2911 17.7349 13.7402 17.7349 13.4004 17.3945C13.0606 17.0539 13.0607 16.5018 13.4004 16.1611L19.082 10.4697L19.6787 9.87207H0.349609V8.12793H19.6787L19.082 7.53027L13.4004 1.83887C13.0607 1.49823 13.0606 0.946093 13.4004 0.605469Z" fill="#002148" stroke="#C4F5B2" stroke-width="0.7"/>
+                  </svg>   
+                </button>
+                </div>
+                <div x-show="open === 2" x-collapse>
+                  <p data-animate-fade-up class="lg:max-w-[787px] py-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.</p>
+                </div>
+                <!-- Line for animation -->
+                <div data-animate-line class="h-px bottom-0 left-0 w-full bg-current absolute"></div>
+              </div>
+               <!-- FAQ ITEM 4 -->
+               <div class="relative py-5">
+                <div class="flex items-center justify-between gap-5">
+                 <p data-animate-fade-up>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor?</p> 
+                 <button @click="open === 3 ? open = null : open = 3" data-animate-fade-up type="button" class="bg-light-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group shrink-0">
+                  <svg class="duration-300" :class="open === 3 ? 'rotate-90' : 'group-hover:rotate-90'" width="23" height="18" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.4004 0.605469C13.7402 0.265105 14.2911 0.265105 14.6309 0.605469L22.3945 8.38281C22.7346 8.72351 22.7346 9.27649 22.3945 9.61719L14.6309 17.3945C14.2911 17.7349 13.7402 17.7349 13.4004 17.3945C13.0606 17.0539 13.0607 16.5018 13.4004 16.1611L19.082 10.4697L19.6787 9.87207H0.349609V8.12793H19.6787L19.082 7.53027L13.4004 1.83887C13.0607 1.49823 13.0606 0.946093 13.4004 0.605469Z" fill="#002148" stroke="#C4F5B2" stroke-width="0.7"/>
+                  </svg>   
+                </button>
+                </div>
+                <div x-show="open === 3" x-collapse>
+                  <p data-animate-fade-up class="lg:max-w-[787px] py-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.</p>
+                </div>
+                <!-- Line for animation -->
+                <div data-animate-line class="h-px bottom-0 left-0 w-full bg-current absolute"></div>
+              </div>
+               <!-- FAQ ITEM 5 -->
+               <div class="relative py-5">
+                <div class="flex items-center justify-between gap-5">
+                 <p data-animate-fade-up>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor?</p> 
+                 <button @click="open === 4 ? open = null : open = 4" data-animate-fade-up type="button" class="bg-light-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group shrink-0">
+                  <svg class="duration-300" :class="open === 4 ? 'rotate-90' : 'group-hover:rotate-90'" width="23" height="18" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.4004 0.605469C13.7402 0.265105 14.2911 0.265105 14.6309 0.605469L22.3945 8.38281C22.7346 8.72351 22.7346 9.27649 22.3945 9.61719L14.6309 17.3945C14.2911 17.7349 13.7402 17.7349 13.4004 17.3945C13.0606 17.0539 13.0607 16.5018 13.4004 16.1611L19.082 10.4697L19.6787 9.87207H0.349609V8.12793H19.6787L19.082 7.53027L13.4004 1.83887C13.0607 1.49823 13.0606 0.946093 13.4004 0.605469Z" fill="#002148" stroke="#C4F5B2" stroke-width="0.7"/>
+                  </svg>   
+                </button>
+                </div>
+                <div x-show="open === 4" x-collapse>
+                  <p data-animate-fade-up class="lg:max-w-[787px] py-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est.</p>
+                </div>
+                <!-- Line for animation -->
+                <div data-animate-line class="h-px bottom-0 left-0 w-full bg-current absolute"></div>
+              </div>
+            </div>
+          </div>
+    
+     </div>
+  </div>
+</section>
+
+ 
+
+<!-- Start the process today Section -->
+<section class="pt-0 pb-0 bg-light text-dark-blue">
+    <div class="hidden lg:block absolute inset-0 size-full overflow-hidden">
+      <img data-animate-zoom-in class="size-full object-contain object-right" src="./assets/images/home/process-bg.webp" alt="bg">
+    </div>
+    <div class="container">
+      <div class="flex flex-col">
+        <div class="pt-20 pb-16 lg:py-[10.5vw] 3xl:py-[202px] flex flex-col gap-6 max-w-[729px]">
+          <h2 data-animate-heading>Start the<br> process today!</h2>
+          <p data-animate-paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doaoum eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostru.</p>
+          <div data-animate-fade-up class="mt-2 flex flex-col md:flex-row md:justify-start">
+            
+  
+    
+    
+  
+
+  <a href="#" class="flex items-center group relative z-0">
+    <span class="w-full md:w-[163px] 3xl:w-[177px] h-14 3xl:h-[61px] text-[17px] bg-light-green text-dark-green flex items-center justify-center rounded-full">
+      Connect With Us
+    </span>
+    <div class="hidden md:flex size-14 3xl:size-[61px] items-center justify-center rounded-full bg-light-green text-dark-green -ml-14 3xl:ml-[-61px] relative -z-10 group-hover:ml-0 duration-300 ease-in-out">
+      <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.8594 0.486328C14.2803 0.104724 14.9696 0.10478 15.3906 0.486328L23.4932 7.83203C23.9025 8.20341 23.9025 8.79659 23.4932 9.16797L15.3906 16.5137C14.9696 16.8952 14.2803 16.8953 13.8594 16.5137C13.4497 16.1422 13.4497 15.5492 13.8594 15.1777L19.7881 9.80273L20.1719 9.4541H0.200195V7.5459H20.1719L19.7881 7.19727L13.8594 1.82227C13.4497 1.45083 13.4497 0.857767 13.8594 0.486328Z" class="stroke-light-green fill-dark-green" stroke-width="0.7"/>
+      </svg>
+    </div>
+  </a>
+
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-7">
+          <div data-animate-fade-up class="bg-light-green rounded-b-theme lg:rounded-b-none rounded-t-theme lg:rounded-t-theme-lg px-6 xl:px-10 pt-8 xl:pt-10 pb-12 flex flex-col gap-4">
+            <div class="flex items-center justify-between">
+              <div class="h4">Help & Support</div>
+              <a href="#" class="shrink-0 bg-dark-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group">
+                <svg class="group-hover:rotate-45 duration-300" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.40388 1.2202C4.40346 0.739275 4.79303 0.349709 5.27395 0.350129L16.2631 0.359797C16.7445 0.360217 17.1355 0.751228 17.1359 1.23263L17.1456 12.2218C17.146 12.7027 16.7565 13.0923 16.2755 13.0919C15.7944 13.0912 15.404 12.7008 15.4034 12.2197L15.3965 4.17776L15.3958 3.33324L1.72806 17.001L0.494769 15.7677L14.1625 2.09994L13.318 2.09925L5.27603 2.09235C4.79494 2.0917 4.4045 1.7013 4.40388 1.2202Z" fill="#F5F5F7" stroke="#295E56" stroke-width="0.7"/>
+                </svg>  
+              </a>
+            </div>
+          </div>
+
+          <div data-animate-fade-up class="bg-light-green rounded-b-theme lg:rounded-b-none rounded-t-theme lg:rounded-t-theme-lg px-6 xl:px-10 pt-8 xl:pt-10 pb-12 flex flex-col gap-4">
+            <div class="flex items-center justify-between">
+              <div class="h4">Business Queries</div>
+              <a href="#" class="shrink-0 bg-dark-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group">
+                <svg class="group-hover:rotate-45 duration-300" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.40388 1.2202C4.40346 0.739275 4.79303 0.349709 5.27395 0.350129L16.2631 0.359797C16.7445 0.360217 17.1355 0.751228 17.1359 1.23263L17.1456 12.2218C17.146 12.7027 16.7565 13.0923 16.2755 13.0919C15.7944 13.0912 15.404 12.7008 15.4034 12.2197L15.3965 4.17776L15.3958 3.33324L1.72806 17.001L0.494769 15.7677L14.1625 2.09994L13.318 2.09925L5.27603 2.09235C4.79494 2.0917 4.4045 1.7013 4.40388 1.2202Z" fill="#F5F5F7" stroke="#295E56" stroke-width="0.7"/>
+                </svg>  
+              </a>
+            </div>
+          </div>
+
+          <div data-animate-fade-up class="bg-light-green rounded-b-theme lg:rounded-b-none rounded-t-theme lg:rounded-t-theme-lg px-6 xl:px-10 pt-8 xl:pt-10 pb-12 flex flex-col gap-4">
+            <div class="flex items-center justify-between">
+              <div class="h4">Faults and Outages</div>
+              <a href="#" class="shrink-0 bg-dark-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group">
+                <svg class="group-hover:rotate-45 duration-300" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.40388 1.2202C4.40346 0.739275 4.79303 0.349709 5.27395 0.350129L16.2631 0.359797C16.7445 0.360217 17.1355 0.751228 17.1359 1.23263L17.1456 12.2218C17.146 12.7027 16.7565 13.0923 16.2755 13.0919C15.7944 13.0912 15.404 12.7008 15.4034 12.2197L15.3965 4.17776L15.3958 3.33324L1.72806 17.001L0.494769 15.7677L14.1625 2.09994L13.318 2.09925L5.27603 2.09235C4.79494 2.0917 4.4045 1.7013 4.40388 1.2202Z" fill="#F5F5F7" stroke="#295E56" stroke-width="0.7"/>
+                </svg>  
+              </a>
+            </div>
+          </div>
+
+          <div data-animate-fade-up class="bg-light-green rounded-b-theme lg:rounded-b-none rounded-t-theme lg:rounded-t-theme-lg px-6 xl:px-10 pt-8 xl:pt-10 pb-12 flex flex-col gap-4">
+            <div class="flex items-center justify-between">
+              <div class="h4">Contact Us</div>
+              <a href="#" class="shrink-0 bg-dark-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group">
+                <svg class="group-hover:rotate-45 duration-300" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.40388 1.2202C4.40346 0.739275 4.79303 0.349709 5.27395 0.350129L16.2631 0.359797C16.7445 0.360217 17.1355 0.751228 17.1359 1.23263L17.1456 12.2218C17.146 12.7027 16.7565 13.0923 16.2755 13.0919C15.7944 13.0912 15.404 12.7008 15.4034 12.2197L15.3965 4.17776L15.3958 3.33324L1.72806 17.001L0.494769 15.7677L14.1625 2.09994L13.318 2.09925L5.27603 2.09235C4.79494 2.0917 4.4045 1.7013 4.40388 1.2202Z" fill="#F5F5F7" stroke="#295E56" stroke-width="0.7"/>
+                </svg>  
+              </a>
+            </div>
+          </div>
+ 
+        </div>
+      </div>
+    </div>
+</section>
+
+
+        </main>
+        
+          <!-- Footer Section -->
+<footer class="bg-dark-green text-light rounded-t-theme lg:rounded-t-theme-lg py-20 lg:py-[5.6vw] 3xl:py-28 -mt-4 relative z-20">
+  <div class="container">
+    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-[112fr_88fr] gap-10 md:gap-[5.6vw] 3xl:gap-[109px]">
+      <div class="flex flex-col">
+        <a class="mb-10" href="/">
+          <img class="w-[232px] lg:w-[20.9vw] 3xl:w-[403px]" width="403" height="57" src="./assets/images/svg/logo.svg" alt="logo">
+        </a>
+        <p class="mb-10 md:mb-14">Diamond Energy acknowledges the Traditional Custodians of Country throughout Australia and their connections to land, waters and community. We pay respect to their Elders past and present and extend that respect to all Aboriginal and Torres Strait Islander peoples.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-10 lg:gap-0 mb-10 lg:mb-24">
+          <div class="flex flex-col gap-7">
+            <div>Important Information</div>
+            <ul class="flex flex-col gap-3">
+              <li><a href="#">Basic Plan Information</a></li>
+              <li><a href="#">Concessions and Rebates</a></li>
+              <li><a href="#">Your Meter</a></li>
+              <li><a href="#">Faults & Emergencies</a></li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-7">
+            <div>Terms & Conditions</div>
+            <ul class="flex flex-col gap-3">
+              <li><a href="#">Service Fees & Charges</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Credit Reporting Policy</a></li>
+              <li><a href="#">Consumer Data Right</a></li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-7">
+            <div>Pay Your Bill</div>
+            <ul class="flex flex-col gap-3">
+              <li><a href="#">Payment Assistance</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="flex items-end gap-[4.6vw] 3xl:gap-[89px]">
+          <div class="flex flex-col gap-7">
+            <div>Connect</div>
+            <ul class="flex flex-col gap-3">
+              <li><a target="_blank" href="#">LinkedIn</a></li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-7">
+            <div>Contact Us</div>
+            <ul class="flex flex-col gap-3">
+              <li><a href="tel:1300838009">1300 838 009</a></li>
+            </ul>
+          </div>
+         
+        </div>
+      </div>
+      <div class="flex flex-col gap-10 md:gap-12 lg:gap-16">
+        <form class="flex flex-col">
+          <p class="mb-6 md:mb-7">Stay up to date on all Diamond Energy insights by subscribing to our Newsletter.</p>
+          <input required type="email" placeholder="Enter your email address" class="mb-7 px-8 py-4 rounded-full bg-white text-dark-blue placeholder:text-dark-blue/60 focus:outline-none">
+          
+  
+    
+    
+  
+
+  <a href="#" class="flex items-center group relative z-0">
+    <span class="w-full md:w-[163px] 3xl:w-[177px] h-14 3xl:h-[61px] text-[17px] bg-light-green text-dark-green flex items-center justify-center rounded-full">
+      Submit
+    </span>
+    <div class="hidden md:flex size-14 3xl:size-[61px] items-center justify-center rounded-full bg-light-green text-dark-green -ml-14 3xl:ml-[-61px] relative -z-10 group-hover:ml-0 duration-300 ease-in-out">
+      <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.8594 0.486328C14.2803 0.104724 14.9696 0.10478 15.3906 0.486328L23.4932 7.83203C23.9025 8.20341 23.9025 8.79659 23.4932 9.16797L15.3906 16.5137C14.9696 16.8952 14.2803 16.8953 13.8594 16.5137C13.4497 16.1422 13.4497 15.5492 13.8594 15.1777L19.7881 9.80273L20.1719 9.4541H0.200195V7.5459H20.1719L19.7881 7.19727L13.8594 1.82227C13.4497 1.45083 13.4497 0.857767 13.8594 0.486328Z" class="stroke-light-green fill-dark-green" stroke-width="0.7"/>
+      </svg>
+    </div>
+  </a>
+
+        </form>
+        <div class="flex gap-6 md:gap-10 xl:gap-12 items-center md:items-end flex-col md:flex-row">
+          <ul class="flex gap-4">
+            <li><a target="_blank" href="#"><img src="./assets/images/svg/instgram-logo.svg" alt="instgram"></a></li>
+            <li><a target="_blank" href="#"><img src="./assets/images/svg/linkedin-logo.svg" alt="linkedin"></a></li>
+            <li><a target="_blank" href="#"><img src="./assets/images/svg/facebook-logo.svg" alt="facebook"></a></li>
+          </ul>
+          <div class="flex flex-col items-center text-center gap-3 text-xs md:text-[17px]">
+            <img src="./assets/images/svg/map.svg" alt="Map Australia">
+            100% Australian<br> Owned
+          </div>
+          <div class="shrink-0">
+            <img width="210" height="71" src="./assets/images/svg/eko.svg" alt="eko">
+          </div>
+        </div>
+        
+        
+        <ul class="flex flex-col md:flex-row items-center justify-between mt-auto gap-3 md:gap-4">
+          <li>ABN 93 001 263 734</li>
+          <li>&copy; 2025 Diamond Energy</li>
+          <li><a data-backtotop href="javascript:;">Back To The Top</a></li>
+        </ul>
+ 
+      </div>
+    </div>
+  </div>
+</footer>
+        
+      </div>
+    </div>
+
+    <!--  GSAP -->  
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <!-- Alpine Plugins -->
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <!-- Alpine Core -->
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Main JS -->
+    <script type="text/javascript" src="./assets/js/main.js"></script>
+  </body>
+</html>

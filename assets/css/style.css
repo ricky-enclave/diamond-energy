@@ -20,13 +20,10 @@
     --font-sans: "FK Grotesk Trial", sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
     --text-xs: 0.75rem;
     --text-xs--line-height: calc(1 / 0.75);
-    --text-sm: 0.875rem;
-    --text-sm--line-height: calc(1.25 / 0.875);
     --text-base: 1rem;
     --text-base--line-height: calc(1.5 / 1);
     --text-lg: 1.125rem;
@@ -43,7 +40,6 @@
     --text-5xl--line-height: 1;
     --text-8xl: 6rem;
     --text-8xl--line-height: 1;
-    --font-weight-bold: 700;
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -434,6 +430,9 @@
     --tw-scale-z: 110%;
     scale: var(--tw-scale-x) var(--tw-scale-y);
   }
+  .rotate-90 {
+    rotate: 90deg;
+  }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
@@ -634,6 +633,9 @@
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
+  .py-5 {
+    padding-block: calc(var(--spacing) * 5);
+  }
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
   }
@@ -642,6 +644,9 @@
   }
   .pt-0 {
     padding-top: calc(var(--spacing) * 0);
+  }
+  .pt-5 {
+    padding-top: calc(var(--spacing) * 5);
   }
   .pt-6 {
     padding-top: calc(var(--spacing) * 6);
@@ -805,6 +810,13 @@
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
         rotate: 45deg;
+      }
+    }
+  }
+  .group-hover\:rotate-90 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        rotate: 90deg;
       }
     }
   }
@@ -1140,6 +1152,11 @@
       max-width: 703px;
     }
   }
+  .lg\:max-w-\[787px\] {
+    @media (width >= 1024px) {
+      max-width: 787px;
+    }
+  }
   .lg\:grid-cols-2 {
     @media (width >= 1024px) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1150,29 +1167,44 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
+  .lg\:grid-cols-\[3fr_7fr\] {
+    @media (width >= 1024px) {
+      grid-template-columns: 3fr 7fr;
+    }
+  }
   .lg\:grid-cols-\[4fr_6fr\] {
     @media (width >= 1024px) {
       grid-template-columns: 4fr 6fr;
     }
   }
-  .lg\:grid-cols-\[5fr_5fr\] {
+  .lg\:grid-cols-\[35fr_65fr\] {
     @media (width >= 1024px) {
-      grid-template-columns: 5fr 5fr;
+      grid-template-columns: 35fr 65fr;
+    }
+  }
+  .lg\:grid-cols-\[36fr_58fr\] {
+    @media (width >= 1024px) {
+      grid-template-columns: 36fr 58fr;
+    }
+  }
+  .lg\:grid-cols-\[36fr_64fr\] {
+    @media (width >= 1024px) {
+      grid-template-columns: 36fr 64fr;
+    }
+  }
+  .lg\:grid-cols-\[39fr_58fr\] {
+    @media (width >= 1024px) {
+      grid-template-columns: 39fr 58fr;
+    }
+  }
+  .lg\:grid-cols-\[42fr_58fr\] {
+    @media (width >= 1024px) {
+      grid-template-columns: 42fr 58fr;
     }
   }
   .lg\:grid-cols-\[43fr_57fr\] {
     @media (width >= 1024px) {
       grid-template-columns: 43fr 57fr;
-    }
-  }
-  .lg\:grid-cols-\[45fr_55fr\] {
-    @media (width >= 1024px) {
-      grid-template-columns: 45fr 55fr;
-    }
-  }
-  .lg\:grid-cols-\[46fr_54fr\] {
-    @media (width >= 1024px) {
-      grid-template-columns: 46fr 54fr;
     }
   }
   .lg\:grid-cols-\[47fr_53fr\] {
@@ -1392,6 +1424,11 @@
       max-width: 360px;
     }
   }
+  .xl\:max-w-\[537px\] {
+    @media (width >= 1280px) {
+      max-width: 537px;
+    }
+  }
   .xl\:max-w-\[620px\] {
     @media (width >= 1280px) {
       max-width: 620px;
@@ -1400,11 +1437,6 @@
   .xl\:max-w-\[696px\] {
     @media (width >= 1280px) {
       max-width: 696px;
-    }
-  }
-  .xl\:max-w-\[699px\] {
-    @media (width >= 1280px) {
-      max-width: 699px;
     }
   }
   .xl\:max-w-\[733px\] {
@@ -2102,6 +2134,19 @@ html, body, .scrollbar {
     &::after {
       content: var(--tw-content);
       background-repeat: no-repeat;
+    }
+  }
+  .ul {
+    list-style-type: disc;
+    padding-left: calc(var(--spacing) * 6);
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+    @media (width >= 1280px) {
+      font-size: 17px;
+    }
+    @media (width >= 1280px) {
+      --tw-leading: 1.47;
+      line-height: 1.47;
     }
   }
   [data-animate-heading], [data-animate-paragraph], [data-animate-zoom-in], [data-animate-fade-up], [data-animate-line] {

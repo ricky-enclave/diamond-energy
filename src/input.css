@@ -121,6 +121,10 @@ html, body, .scrollbar {
   @apply relative z-0 after:-z-10 after:absolute after:bg-[url('../images/svg/mark.svg')] after:-inset-x-3 after:top-0 after:-bottom-3 after:bg-contain after:bg-no-repeat after:bg-center
  }
 
+ .ul {
+  @apply text-base xl:text-[17px] xl:leading-[1.47] list-disc pl-6
+ }
+
 
  [data-animate-heading],
 [data-animate-paragraph],
