@@ -20,6 +20,7 @@
     --font-sans: "FK Grotesk Trial", sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-emerald-100: oklch(95% 0.052 163.051);
     --color-white: #fff;
     --spacing: 0.25rem;
     --text-xs: 0.75rem;
@@ -437,6 +438,9 @@
   .w-full {
     width: 100%;
   }
+  .max-w-\[662px\] {
+    max-width: 662px;
+  }
   .max-w-\[699px\] {
     max-width: 699px;
   }
@@ -624,6 +628,9 @@
   }
   .bg-dark-green {
     background-color: var(--color-dark-green);
+  }
+  .bg-emerald-100 {
+    background-color: var(--color-emerald-100);
   }
   .bg-light {
     background-color: var(--color-light);
@@ -1558,6 +1565,11 @@
   .xl\:grid-cols-4 {
     @media (width >= 1280px) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .xl\:grid-cols-\[6fr_4fr\] {
+    @media (width >= 1280px) {
+      grid-template-columns: 6fr 4fr;
     }
   }
   .xl\:grid-cols-\[31vw_1fr\] {

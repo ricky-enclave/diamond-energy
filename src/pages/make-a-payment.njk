@@ -1,6 +1,6 @@
 {# src/pages/index.njk #}
 {% extends "layouts/base.njk" %}
-{% set title = "Looking to Move | Diamond Energy" %}
+{% set title = "Make a Payment | Diamond Energy" %}
 
 {% from "components/button.njk" import Button %}
 {% from "components/spacing.njk" import sectionTop, sectionBottom %}
@@ -12,73 +12,85 @@
 <section class="{{ sectionTop('large') }} {{ sectionBottom('none') }} bg-light text-dark-blue">
   <div class="container">
     <div class="flex flex-col gap-8 md:gap-12 xl:gap-16">
-      <h1 data-animate-heading class="title">Looking to Move?</h1> 
-      <p data-animate-fade-up class="max-w-[699px]">
-        Complete this form to close your current Diamond Energy account. You can also set up an electricity account for your new address.</p>
-        <form action="" class="flex flex-col gap-8 md:gap-10 items-start max-w-[845px]">
-            <div data-animate-fade-up class="flex flex-col gap-5 w-full">
-              <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Full Name*">
-              <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Diamond Energy Account Number">
-            </div>
-         
-            <div data-animate-fade-up class="flex flex-col gap-5 w-full">
-              <p>Not mandatory, but helpful</p>
-              <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Primary Contact Number*">
-            </div>
+      <h1 data-animate-heading class="title">Payment Options</h1> 
+      <div class="grid xl:grid-cols-[6fr_4fr] gap-10">
+        <div class="flex flex-col gap-8 md:gap-12 xl:gap-16">
+          <div class="max-w-[662px]" data-animate-fade-up>
+           <h4>Pay Now</h4> 
+           <p>You can make a payment by Visa, Mastercard or American Express. <br/>
+            Use Customer Reference # on first page of your bill.<br/>
+            (Processing fee of 0.6% applies*)</p>
+            <br/><br/>
 
-            <div data-animate-fade-up class="flex flex-col gap-5 w-full">
-              <p>Supply Address of property you are moving out of*</p>
-              <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Street Address Line 1">
-              <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Street Address Line 2">
-              <div class="grid grid-cols-1 gap-x-8 gap-y-5 lg:grid-cols-3">
-                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="City">
-                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="State">
-                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Postcode">
+
+<h4>Want to set up or amend Auto-Payment via Direct Debit?</h4>
+You can set up or amend Direct Debit payments via your Bank Account or Credit Card here using the form below. This means we will issue your bill and process your payment on the Due Date (14 days later). You can also arrange for hassle free auto-payments for bill smoothing, where you can make regular payments to help manage your budget.
+          </div>
+          <form action="" class="flex flex-col gap-8 md:gap-10 items-start max-w-[845px]">
+              <div data-animate-fade-up class="flex flex-col gap-5 w-full">
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Full Name*">
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Diamond Energy Account Number">
+                <input type="email" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Billing Email*">
               </div>
-            </div>
-
-            <div data-animate-fade-up class="flex flex-col gap-5 w-full">
-              <p>When would you like power to be turned off at this address?</p>
-              <input type="date" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="dd/mm/yyyy">
-            </div>
-
-            <div data-animate-fade-up class="flex flex-col gap-5 w-full">
-              <p>Is your electricity meter / switchboard accessible for a final meter reading?*</p>
-              <div class="flex items-center gap-15">
-                <label class="flex items-center gap-8 cursor-pointer" for="final-meter-yes">
-                  <input class="hidden peer" type="radio" name="final-meter" id="final-meter-yes">
-                  <span class="size-7 rounded-full bg-light-green peer-checked:bg-dark-green"></span>
-                  <p>Yes</p>
-                </label>
-                <label class="flex items-center gap-8 cursor-pointer" for="final-meter-no">
-                  <input class="hidden peer" type="radio" name="final-meter" id="final-meter-no">
-                  <span class="size-7 rounded-full bg-light-green peer-checked:bg-dark-green"></span>
-                  <p>No</p>
-                </label>
+          
+              <div data-animate-fade-up class="flex flex-col gap-5 w-full">
+                <p>Electricity Supply Address*</p>
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Street Address Line 1">
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Street Address Line 2">
+                <div class="grid grid-cols-1 gap-x-8 gap-y-5 lg:grid-cols-3">
+                  <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="City">
+                  <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="State">
+                  <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Postcode">
+                </div>
               </div>
-            </div>
 
-            <div data-animate-fade-up class="flex flex-col gap-5 w-full">
-              <p>Is Life Support registered at the property you are moving out of?*</p>
-              <div class="flex items-center gap-15">
-                <label class="flex items-center gap-8 cursor-pointer" for="life-support-yes">
-                  <input class="hidden peer" type="radio" name="life-support" id="life-support-yes">
-                  <span class="size-7 rounded-full bg-light-green peer-checked:bg-dark-green"></span>
-                  <p>Yes</p>
-                </label>
-                <label class="flex items-center gap-8 cursor-pointer" for="life-support-no">
-                  <input class="hidden peer" type="radio" name="life-support" id="life-support-no">
-                  <span class="size-7 rounded-full bg-light-green peer-checked:bg-dark-green"></span>
-                  <p>No</p>
-                </label>
+              <div  class="w-full md:w-auto" data-animate-fade-up>
+                {{ Button("Next", "#", "light-green") }}
               </div>
-            </div>
 
-            <div class="w-full md:w-auto" data-animate-fade-up>
-              {{ Button("Next", "#", "light-green") }}
-            </div>
+          </form>
+        </div>
+        <div data-animate-fade-up class="block">
+          <h3>More Options</h3>
+          <br/><br/>
+<h4>MyAccount</h4>
+<p>You can access your account and make a payment by credit card or bank account with MyAccount if a payment is due.</p>
+ <br/><br/>
+ <h4>Electronic funds transfer online</h4>
+ <p>
+Account Name: Diamond Energy Retail<br/>
+BSB: 083 170<br/>       Account Number: 188075505<br/>
+Use Customer Reference # on first page of your bill. 
+<br/>(No fees apply)<br/></p>
 
-        </form>
+
+<br/>
+<h4>Internet banking BPay</h4>
+<p>Biller code: 102467<br/>
+Use Customer Reference # on first page of your bill.</p>
+<br/>
+
+
+<h4>Mail</h4>
+<p>
+You can send a cheque to:<br/>
+Diamond Energy Retail<br/>
+Level 11/480 Swan Street,<br/>
+Richmond, VIC 3121
+</p>
+
+<br/>
+<h4>In person at any NAB branch</h4>
+<p>
+Account Name: Diamond Energy Retail<br/>
+BSB: 083 170Account Number: 188075505<br/>
+Use Customer Reference # on first page of your bill.</p>
+<br/>
+<h4>Telephone</h4>
+<p>Pay over the phone by credit card by calling<br/>1300 838 009 during business hours – remember<br/>to have your bill with you.</p>
+
+        </div>
+      </div>
     </div>
   </div>
 </section>
