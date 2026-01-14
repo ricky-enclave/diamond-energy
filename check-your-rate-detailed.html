@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link href="./assets/css/style.css" rel="stylesheet">
   </head>
-  <body class="font-sans antialiased bg-white text-dark-blue">
+  <body class="font-sans antialiased bg-light text-dark-blue">
     
       
 
@@ -130,16 +130,321 @@
           
 
 
-<section class="pt-16 lg:pt-[6.25vw] 3xl:pt-[120px] pb-0 bg-light text-dark-blue">
+<section x-data="{ tab: 'residential' }" class="pt-16 lg:pt-[6.25vw] 3xl:pt-[120px] pb-0 bg-light text-dark-blue">
   <div class="container">
     <div class="flex flex-col gap-8 md:gap-12 xl:gap-16">
       <h1 data-animate-heading class="title">Compare Plans</h1> 
-     
+      <div data-animate-fade-up class="gap-6 flex items-center">
+        <!-- Residential -->
+        <button type="button" @click="tab = 'residential'" class="text-dark-blue h-[51px] xl:h-[3.64vw] 3xl:h-[70px] flex items-center justify-center px-7 xl:px-9 3xl:px-10 rounded-full cursor-pointer transition" :class="tab === 'residential' ? 'bg-light-green' : 'bg-light'">
+          <h4>Residential</h4>
+        </button>
+    
+        <!-- Business -->
+        <button type="button" @click="tab = 'business'" class="text-dark-blue h-[51px] xl:h-[3.64vw] 3xl:h-[70px] flex items-center justify-center px-7 xl:px-9 3xl:px-10 rounded-full cursor-pointer transition" :class="tab === 'business' ? 'bg-light-green' : 'bg-light'">
+          <h4>Business</h4>
+        </button>
+      </div>
+      <div data-animate-fade-up class="bg-white rounded-4xl lg:rounded-full px-10 md:px-16 py-7 flex flex-col lg:flex-row lg:items-center gap-10 xl:gap-24">
+        <input placeholder="Enter Address or Postcode...." type="text" class="max-w-[729px] py-2 border-b text-base xl:text-[17px] xl:leading-[1.47] text-dark-blue focus:ring-0 focus:outline-0 flex-1">
+        <div class="lg:ml-auto flex items-center relative z-0">
+          <select class="appearance-none pr-20" name="" id="">
+            <option selected="selected" disabled="disabled" value="">Electricity </option>
+            <option value="1">1</option>
+            <option value="1">1</option>
+            <option value="1">1</option>
+            <option value="1">1</option>
+          </select>
+          <button type="button" class="absolute -z-10 right-0 bg-light-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group shrink-0">
+            <svg class="duration-300 rotate-90" width="23" height="18" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.4004 0.605469C13.7402 0.265105 14.2911 0.265105 14.6309 0.605469L22.3945 8.38281C22.7346 8.72351 22.7346 9.27649 22.3945 9.61719L14.6309 17.3945C14.2911 17.7349 13.7402 17.7349 13.4004 17.3945C13.0606 17.0539 13.0607 16.5018 13.4004 16.1611L19.082 10.4697L19.6787 9.87207H0.349609V8.12793H19.6787L19.082 7.53027L13.4004 1.83887C13.0607 1.49823 13.0606 0.946093 13.4004 0.605469Z" fill="#002148" stroke="#C4F5B2" stroke-width="0.7"/>
+            </svg>   
+          </button>
+        </div>
+
+        <div class="flex items-center relative z-0">
+          <select class="appearance-none pr-20" name="" id="">
+            <option selected="selected" disabled="disabled" value="">Estimate by year </option>
+            <option value="1">1</option>
+            <option value="1">1</option>
+            <option value="1">1</option>
+            <option value="1">1</option>
+          </select>
+          <button type="button" class="absolute -z-10 right-0 bg-light-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group shrink-0">
+            <svg class="duration-300 rotate-90" width="23" height="18" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.4004 0.605469C13.7402 0.265105 14.2911 0.265105 14.6309 0.605469L22.3945 8.38281C22.7346 8.72351 22.7346 9.27649 22.3945 9.61719L14.6309 17.3945C14.2911 17.7349 13.7402 17.7349 13.4004 17.3945C13.0606 17.0539 13.0607 16.5018 13.4004 16.1611L19.082 10.4697L19.6787 9.87207H0.349609V8.12793H19.6787L19.082 7.53027L13.4004 1.83887C13.0607 1.49823 13.0606 0.946093 13.4004 0.605469Z" fill="#002148" stroke="#C4F5B2" stroke-width="0.7"/>
+            </svg>   
+          </button>
+        </div>
+
+      </div>
+      <div class="overflow-x-hidden md:overflow-x-auto 2xl:overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-[400px_400px_400px] 2xl:grid-cols-3 gap-12 md:gap-8">
+          <!-- First -->
+          <div data-animate-fade-up class="flex flex-col items-center gap-10">
+            <div class="rounded-4xl xl:rounded-[60px] overflow-hidden">
+              <div class="bg-dark-blue text-white p-7 md:p-14 flex flex-col gap-4">
+                <h3>Single Rate</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+              <div class="bg-white text-dark-blue px-7 md:px-14 py-10 md:py-20">
+                <div class="flex flex-col items-baseline gap-3">
+                  <div class="h2 font-bold">3%</div>
+                  <div class="h4 whitespace-nowrap">below the Reference Price</div>
+                </div>
+                <div class="h2 font-bold mt-16">$2,339</div>
+                <p class="mt-10">(Estimated annual price incl. GST, based on a representative household using 4,900kWh/year on a single rate tariff in the Endeavour Energy network)</p>
+                <p class="mt-12">With our Pay on Time Discount of 2%, if you pay on time and receive bills by email, you will be a further 2% below the Reference Price
+                  <br><br>
+                  With our Pay on Time Discount of 2%, available if you pay on time and receive bills by email, and, based on a representative household using 4,900kWh/year on a single rate tariff in the Endeavour Energy network, the lowest possible annual price is $2,292 incl. GST.
+                  <br><br>
+                  The actual amount you pay each year on your electricity bill will differ based on your usage.</p>
+                  <h4 class="mt-12">Residential Rates* in Endeavour Energy</h4>
+                  <p class="mt-6">For single rate tariff:<br>
+                    Daily supply charge         0.9906 $/day<br>
+                    All day rate                        0.4035 $/kWh<br>
+                    All rates inclusive of GST<br>
+                    <br>
+                    Not sure which tariffs apply? <a target="_blank" class="underline" href="contact-us.html">contact us</a>
+                  </p>
+                  <div class="mt-10 flex items-center gap-10 xl:gap-16">
+                    <img width="87" height="87" src="./assets/images/common/solar-feed.png" alt="solar-feed">
+                    <div class="h4">Solar Feed-in Rate<br>
+                      3.00 c/kWh</div>
+                  </div>
+                  <p class="mt-8">* These rates apply for a small customer for whom the electricity is principally for personal, household or domestic use, and where the prices for the supply do not include a controlled load tariff.</p>
+                  <div class="h4 mt-12">Discount - applied to usage and supply charges</div>
+                  <div class="grid grid-cols-2 h5 mt-4 font-bold">
+                    <div>Pay on time</div>
+                    <div>2%</div>
+                  </div>
+                  <p class="mt-4">Conditional, on paying on time and receiving bills by email</p>
+                  <div class="mt-12 h4">Greenpower Options </div>
+                  <div class="flex flex-col gap-1 mt-4 h5 font-bold">
+                    <div>100%</div>
+                    <div>50%</div>
+                  </div>
+                  <div class="mt-12">
+                    <div class="h4">Plan Details</div>
+                    <ul class="ul mt-4">
+                      <li>Ongoing contract</li>
+                      <li>Pay on time discount off daily supply and usage charges, if you pay on time and receive bills by email</li>
+                      <li>Flexible payment options</li>
+                      <li>No lock-in contracts or exit fees</li>
+                    </ul>
+                  </div>
+                  <div class="mt-12">
+                    <div class="h4">Reference Price</div>
+                    <p class="mt-4">
+                      Electricity plans must be compared to a Reference Price set each year by the Australian Energy Regulator to make it easier to compare energy plans across the market in each region. The Reference Price is calculated based on an average usage customer in this region and does not include conditional discounts, solar feed-in credits, concessions / rebates or other fees. Your actual energy bill may be significantly different and will depend on your actual electricity usage, when you use electricity and if you have solar.
+                    </p>
+                  </div>
+              </div>
+            </div>
+            <div class="md:flex justify-center w-full" data-animate-fade-up>
+              
+  
+    
+    
+  
+
+  <a href="#" class="flex items-center group relative z-0">
+    <span class="w-full md:w-[163px] 3xl:w-[177px] h-14 3xl:h-[61px] text-[17px] bg-light-green text-dark-green flex items-center justify-center rounded-full">
+      Select Plan
+    </span>
+    <div class="hidden md:flex size-14 3xl:size-[61px] items-center justify-center rounded-full bg-light-green text-dark-green -ml-14 3xl:ml-[-61px] relative -z-10 group-hover:ml-0 duration-300 ease-in-out">
+      <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.8594 0.486328C14.2803 0.104724 14.9696 0.10478 15.3906 0.486328L23.4932 7.83203C23.9025 8.20341 23.9025 8.79659 23.4932 9.16797L15.3906 16.5137C14.9696 16.8952 14.2803 16.8953 13.8594 16.5137C13.4497 16.1422 13.4497 15.5492 13.8594 15.1777L19.7881 9.80273L20.1719 9.4541H0.200195V7.5459H20.1719L19.7881 7.19727L13.8594 1.82227C13.4497 1.45083 13.4497 0.857767 13.8594 0.486328Z" class="stroke-light-green fill-dark-green" stroke-width="0.7"/>
+      </svg>
+    </div>
+  </a>
+
+            </div>
+          </div>
+
+          <!-- Second -->
+          <div data-animate-fade-up class="flex flex-col items-center gap-10">
+            <div class="rounded-4xl xl:rounded-[60px] overflow-hidden">
+              <div class="bg-dark-blue text-white p-7 md:p-14 flex flex-col gap-4">
+                <h3>Time of Use (T53)</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+              <div class="bg-white text-dark-blue px-7 md:px-14 py-10 md:py-20">
+                <div class="flex flex-col items-baseline gap-3">
+                  <div class="h2 font-bold">3%</div>
+                  <div class="h4 whitespace-nowrap">below the Reference Price</div>
+                </div>
+                <div class="h2 font-bold mt-16">$2,339</div>
+                <p class="mt-10">(Estimated annual price incl. GST, based on a representative household using 4,900kWh/year on a single rate tariff in the Endeavour Energy network)</p>
+                <p class="mt-12">With our Pay on Time Discount of 2%, if you pay on time and receive bills by email, you will be a further 2% below the Reference Price
+                  <br><br>
+                  With our Pay on Time Discount of 2%, available if you pay on time and receive bills by email, and, based on a representative household using 4,900kWh/year on a single rate tariff in the Endeavour Energy network, the lowest possible annual price is $2,292 incl. GST.
+                  <br><br>
+                  The actual amount you pay each year on your electricity bill will differ based on your usage.</p>
+                  <h4 class="mt-12">Residential Rates* in Endeavour Energy</h4>
+                  <p class="mt-6">For single rate tariff:<br>
+                    Daily supply charge         0.9906 $/day<br>
+                    All day rate                        0.4035 $/kWh<br>
+                    All rates inclusive of GST<br>
+                    <br>
+                    Not sure which tariffs apply? <a target="_blank" class="underline" href="contact-us.html">contact us</a>
+                  </p>
+                  <div class="mt-10 flex items-center gap-10 xl:gap-16">
+                    <img width="87" height="87" src="./assets/images/common/solar-feed.png" alt="solar-feed">
+                    <div class="h4">Solar Feed-in Rate<br>
+                      3.00 c/kWh</div>
+                  </div>
+                  <p class="mt-8">* These rates apply for a small customer for whom the electricity is principally for personal, household or domestic use, and where the prices for the supply do not include a controlled load tariff.</p>
+                  <div class="h4 mt-12">Discount - applied to usage and supply charges</div>
+                  <div class="grid grid-cols-2 h5 mt-4 font-bold">
+                    <div>Pay on time</div>
+                    <div>2%</div>
+                  </div>
+                  <p class="mt-4">Conditional, on paying on time and receiving bills by email</p>
+                  <div class="mt-12 h4">Greenpower Options </div>
+                  <div class="flex flex-col gap-1 mt-4 h5 font-bold">
+                    <div>100%</div>
+                    <div>50%</div>
+                  </div>
+                  <div class="mt-12">
+                    <div class="h4">Plan Details</div>
+                    <ul class="ul mt-4">
+                      <li>Ongoing contract</li>
+                      <li>Pay on time discount off daily supply and usage charges, if you pay on time and receive bills by email</li>
+                      <li>Flexible payment options</li>
+                      <li>No lock-in contracts or exit fees</li>
+                    </ul>
+                  </div>
+                  <div class="mt-12">
+                    <div class="h4">Reference Price</div>
+                    <p class="mt-4">
+                      Electricity plans must be compared to a Reference Price set each year by the Australian Energy Regulator to make it easier to compare energy plans across the market in each region. The Reference Price is calculated based on an average usage customer in this region and does not include conditional discounts, solar feed-in credits, concessions / rebates or other fees. Your actual energy bill may be significantly different and will depend on your actual electricity usage, when you use electricity and if you have solar.
+                    </p>
+                  </div>
+              </div>
+            </div>
+            <div class="md:flex justify-center w-full" data-animate-fade-up>
+              
+  
+    
+    
+  
+
+  <a href="#" class="flex items-center group relative z-0">
+    <span class="w-full md:w-[163px] 3xl:w-[177px] h-14 3xl:h-[61px] text-[17px] bg-light-green text-dark-green flex items-center justify-center rounded-full">
+      Select Plan
+    </span>
+    <div class="hidden md:flex size-14 3xl:size-[61px] items-center justify-center rounded-full bg-light-green text-dark-green -ml-14 3xl:ml-[-61px] relative -z-10 group-hover:ml-0 duration-300 ease-in-out">
+      <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.8594 0.486328C14.2803 0.104724 14.9696 0.10478 15.3906 0.486328L23.4932 7.83203C23.9025 8.20341 23.9025 8.79659 23.4932 9.16797L15.3906 16.5137C14.9696 16.8952 14.2803 16.8953 13.8594 16.5137C13.4497 16.1422 13.4497 15.5492 13.8594 15.1777L19.7881 9.80273L20.1719 9.4541H0.200195V7.5459H20.1719L19.7881 7.19727L13.8594 1.82227C13.4497 1.45083 13.4497 0.857767 13.8594 0.486328Z" class="stroke-light-green fill-dark-green" stroke-width="0.7"/>
+      </svg>
+    </div>
+  </a>
+
+            </div>
+          </div>
+
+          <!-- Third -->
+          <div data-animate-fade-up class="flex flex-col items-center gap-10">
+            <div class="rounded-4xl xl:rounded-[60px] overflow-hidden">
+              <div class="bg-dark-blue text-white p-7 md:p-14 flex flex-col gap-4">
+                <h3>Standing Offer</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+              <div class="bg-white text-dark-blue px-7 md:px-14 py-10 md:py-20">
+                <div class="flex flex-col items-baseline gap-3">
+                  <div class="h2 font-bold">3%</div>
+                  <div class="h4 whitespace-nowrap">below the Reference Price</div>
+                </div>
+                <div class="h2 font-bold mt-16">$2,339</div>
+                <p class="mt-10">(Estimated annual price incl. GST, based on a representative household using 4,900kWh/year on a single rate tariff in the Endeavour Energy network)</p>
+                <p class="mt-12">With our Pay on Time Discount of 2%, if you pay on time and receive bills by email, you will be a further 2% below the Reference Price
+                  <br><br>
+                  With our Pay on Time Discount of 2%, available if you pay on time and receive bills by email, and, based on a representative household using 4,900kWh/year on a single rate tariff in the Endeavour Energy network, the lowest possible annual price is $2,292 incl. GST.
+                  <br><br>
+                  The actual amount you pay each year on your electricity bill will differ based on your usage.</p>
+                  <h4 class="mt-12">Residential Rates* in Endeavour Energy</h4>
+                  <p class="mt-6">For single rate tariff:<br>
+                    Daily supply charge         0.9906 $/day<br>
+                    All day rate                        0.4035 $/kWh<br>
+                    All rates inclusive of GST<br>
+                    <br>
+                    Not sure which tariffs apply? <a target="_blank" class="underline" href="contact-us.html">contact us</a>
+                  </p>
+                  <div class="mt-10 flex items-center gap-10 xl:gap-16">
+                    <img width="87" height="87" src="./assets/images/common/solar-feed.png" alt="solar-feed">
+                    <div class="h4">Solar Feed-in Rate<br>
+                      3.00 c/kWh</div>
+                  </div>
+                  <p class="mt-8">* These rates apply for a small customer for whom the electricity is principally for personal, household or domestic use, and where the prices for the supply do not include a controlled load tariff.</p>
+                  <div class="h4 mt-12">Discount - applied to usage and supply charges</div>
+                  <div class="grid grid-cols-2 h5 mt-4 font-bold">
+                    <div>Pay on time</div>
+                    <div>2%</div>
+                  </div>
+                  <p class="mt-4">Conditional, on paying on time and receiving bills by email</p>
+                  <div class="mt-12 h4">Greenpower Options </div>
+                  <div class="flex flex-col gap-1 mt-4 h5 font-bold">
+                    <div>100%</div>
+                    <div>50%</div>
+                  </div>
+                  <div class="mt-12">
+                    <div class="h4">Plan Details</div>
+                    <ul class="ul mt-4">
+                      <li>Ongoing contract</li>
+                      <li>Pay on time discount off daily supply and usage charges, if you pay on time and receive bills by email</li>
+                      <li>Flexible payment options</li>
+                      <li>No lock-in contracts or exit fees</li>
+                    </ul>
+                  </div>
+                  <div class="mt-12">
+                    <div class="h4">Reference Price</div>
+                    <p class="mt-4">
+                      Electricity plans must be compared to a Reference Price set each year by the Australian Energy Regulator to make it easier to compare energy plans across the market in each region. The Reference Price is calculated based on an average usage customer in this region and does not include conditional discounts, solar feed-in credits, concessions / rebates or other fees. Your actual energy bill may be significantly different and will depend on your actual electricity usage, when you use electricity and if you have solar.
+                    </p>
+                  </div>
+              </div>
+            </div>
+            <div class="md:flex justify-center w-full" data-animate-fade-up>
+              
+  
+    
+    
+  
+
+  <a href="#" class="flex items-center group relative z-0">
+    <span class="w-full md:w-[163px] 3xl:w-[177px] h-14 3xl:h-[61px] text-[17px] bg-light-green text-dark-green flex items-center justify-center rounded-full">
+      Select Plan
+    </span>
+    <div class="hidden md:flex size-14 3xl:size-[61px] items-center justify-center rounded-full bg-light-green text-dark-green -ml-14 3xl:ml-[-61px] relative -z-10 group-hover:ml-0 duration-300 ease-in-out">
+      <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.8594 0.486328C14.2803 0.104724 14.9696 0.10478 15.3906 0.486328L23.4932 7.83203C23.9025 8.20341 23.9025 8.79659 23.4932 9.16797L15.3906 16.5137C14.9696 16.8952 14.2803 16.8953 13.8594 16.5137C13.4497 16.1422 13.4497 15.5492 13.8594 15.1777L19.7881 9.80273L20.1719 9.4541H0.200195V7.5459H20.1719L19.7881 7.19727L13.8594 1.82227C13.4497 1.45083 13.4497 0.857767 13.8594 0.486328Z" class="stroke-light-green fill-dark-green" stroke-width="0.7"/>
+      </svg>
+    </div>
+  </a>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 </section>
  
- 
+<section class="pt-20 lg:pt-[8.3vw] 3xl:pt-[160px] pb-0 bg-light text-dark-blue">
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-16 xl:gap-20 2xl:gap-24 3xl:gap-28">
+      <p data-animate-fade-up>Please Note: The tariff you are on is determined by the distribution company that runs the energy network in your area as well as the type of electricity meter that you have. Your tariff type will be set out on your electricity bill.</p>
+      <p data-animate-fade-up>Basic Plan Information<br>
+        Terms and Conditions<br>
+        <br><br>
+        Standard Retail Contracts are also available<br>
+        Our basic standard retail contracts on Standing Offer Prices with standard terms and conditions set by regulation are also available. Please contact us if you would like more information on this.<br>
+        <a class="underline" target="_blank" href="https://diamondenergy.com.au/efs/business/standing/Endeavour%20Energy%20Standing%20Rates%20Jul25.pdf">View Standing Offer Prices</a></p>
+    </div>
+  </div>
+</section>
 
 <!-- Start the process today Section -->
 <section class="pt-20 lg:pt-[8.3vw] 3xl:pt-[160px] pb-0 bg-light text-dark-blue">
