@@ -131,7 +131,15 @@
 
 
 <!-- Hero Section -->
-<section class="pt-0 pb-0 bg-dark-green text-light-green">
+<section x-data="{
+  modalOpen: false,
+  modalTab: 'nmi', // 'nmi' | 'address'
+}" x-init="
+  $watch('modalOpen', v => {
+    document.documentElement.classList.toggle('overflow-hidden', v);
+    document.body.classList.toggle('overflow-hidden', v);
+  })
+" class="pt-0 pb-0 bg-dark-green text-light-green relative z-20!">
   <div class="container">
     <div class="grid grid-cols-1 lg:grid-cols-[43fr_57fr] pb-20 lg:py-0 gap-20 xl:gap-24 3xl:gap-35 items-center lg:-ml-10 xl:-ml-20 3xl:ml-[-100px]">
       <div class="md:h-[54vw] 3xl:h-[1037px] flex flex-col -mx-5 md:-mx-10 lg:mx-0">
@@ -148,7 +156,7 @@
           <p data-animate-fade-up>To be Australia’s most trusted supporter of clean, accessible energy — empowering households and businesses to take part in positive change.</p>
           <p data-animate-fade-up>Find your address below to get started.</p>
         </div>
-        <div class="mt-8 md:mt-10 xl:max-w-[36.4vw] 3xl:max-w-[699px] flex flex-col md:items-start gap-5 lg:gap-7 3xl:gap-9">
+        <!-- <div class="mt-8 md:mt-10 xl:max-w-[36.4vw] 3xl:max-w-[699px] flex flex-col md:items-start gap-5 lg:gap-7 3xl:gap-9">
           <div data-animate-fade-up class="h4 w-full">
             <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Enter Address">
           </div>
@@ -165,16 +173,329 @@
     </span>
     <div class="hidden md:flex size-14 3xl:size-[61px] items-center justify-center rounded-full bg-light-green text-dark-green -ml-14 3xl:ml-[-61px] relative -z-10 group-hover:ml-0 duration-300 ease-in-out">
       <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M13.8594 0.486328C14.2803 0.104724 14.9696 0.10478 15.3906 0.486328L23.4932 7.83203C23.9025 8.20341 23.9025 8.79659 23.4932 9.16797L15.3906 16.5137C14.9696 16.8952 14.2803 16.8953 13.8594 16.5137C13.4497 16.1422 13.4497 15.5492 13.8594 15.1777L19.7881 9.80273L20.1719 9.4541H0.200195V7.5459H20.1719L19.7881 7.19727L13.8594 1.82227C13.4497 1.45083 13.4497 0.857767 13.8594 0.486328Z" class="stroke-light-green fill-dark-green" stroke-width="0.7"/>
+        <path
+          d="M13.8594 0.486328C14.2803 0.104724 14.9696 0.10478 15.3906 0.486328L23.4932 7.83203C23.9025 8.20341 23.9025 8.79659 23.4932 9.16797L15.3906 16.5137C14.9696 16.8952 14.2803 16.8953 13.8594 16.5137C13.4497 16.1422 13.4497 15.5492 13.8594 15.1777L19.7881 9.80273L20.1719 9.4541H0.200195V7.5459H20.1719L19.7881 7.19727L13.8594 1.82227C13.4497 1.45083 13.4497 0.857767 13.8594 0.486328Z"
+          class="stroke-light-green fill-dark-green"
+          stroke-width="0.7"
+        />
       </svg>
     </div>
   </a>
 
           </div>
+        </div> -->
+
+        <div class="mt-8 md:mt-10 xl:max-w-[36.4vw] 3xl:max-w-[699px] flex flex-col md:items-start gap-5 lg:gap-7 3xl:gap-9" x-data="{
+            q: '',
+            open: false,
+            loading: false,
+            items: [],
+            active: -1,
+            selected: null,
+            triedSubmit: false,
+
+            // DEMO data (remove when API wired)
+            demo(q){
+              const all = [
+                'ABC St Albany Creek QLD 4035',
+                'ABC St Albany Creek QLD 4035',
+                'ABC St Albany Creek QLD 4035',
+                'ABC St Albany Creek QLD 4035',
+                'ABC St Albany Creek QLD 4035',
+                'ABC St Albany Creek QLD 4035',
+                'ABC St Albany Creek QLD 4035',
+                'ABC St Albany Creek QLD 4035',
+                'ABC St Albany Creek QLD 4035',
+              ];
+              if(!q) return [];
+              const qq = q.toLowerCase();
+              return all.filter(x => x.toLowerCase().includes(qq)).slice(0, 8);
+            },
+
+            async search(){
+              this.selected = null;           
+              this.triedSubmit = false;   
+              const q = this.q.trim();
+              if(q.length < 2){
+                this.items = [];
+                this.open = false;
+                this.active = -1;
+                return;
+              }
+
+              this.loading = true;
+              this.open = true;
+
+              // DEMO
+              await new Promise(r => setTimeout(r, 150));
+              this.items = this.demo(q);
+
+              // REAL API
+              // const res = await fetch(`/api/address?q=${encodeURIComponent(q)}`);
+              // const data = await res.json();
+              // this.items = data?.items ?? [];
+
+              this.loading = false;
+              this.active = this.items.length ? 0 : -1;
+            },
+
+            pick(text){
+              this.q = text;
+              this.selected = text;
+              this.open = false;
+              this.items = [];
+              this.active = -1;
+              this.triedSubmit = false;
+            },
+
+            onEnter(){
+              if(this.open && this.active >= 0 && this.items[this.active]){
+                this.pick(this.items[this.active]);
+              } else {
+                this.trySubmit();
+              }
+            },
+
+            trySubmit(){
+              this.triedSubmit = true;
+
+              // require a picked item 
+              if(!this.selected){
+                return;
+              }
+
+              // redirect / submit
+              // window.location.href = `/offers?address=${encodeURIComponent(this.selected)}`;
+            },
+
+            move(dir){
+              if(!this.open || !this.items.length) return;
+              const next = this.active + dir;
+              if(next < 0) this.active = this.items.length - 1;
+              else if(next >= this.items.length) this.active = 0;
+              else this.active = next;
+
+              this.$nextTick(() => {
+                const el = this.$refs['opt'+this.active];
+                if(el) el.scrollIntoView({ block: 'nearest' });
+              });
+            }
+          }">
+          <!-- INPUT + DROPDOWN WRAP -->
+          <div data-animate-fade-up class="w-full relative z-50" @click.outside="open=false">
+            <input type="text" class="h4 bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Enter Address" x-model="q" @focus="q.trim().length >= 2 ? open = true : open = false" @input.debounce.250ms="search()" @keydown.escape.prevent="open=false" @keydown.enter.prevent="onEnter()" @keydown.arrow-down.prevent="move(1)" @keydown.arrow-up.prevent="move(-1)" :aria-expanded="open.toString()">
+
+            <!-- DROPDOWN PANEL -->
+            <div x-cloak x-show="open" x-transition.opacity.duration.150ms class="absolute left-0 right-0 top-full -mt-11 pt-5 bg-white rounded-theme lg:rounded-theme-lg overflow-hidden -z-10">
+              <div class="py-6 px-6 xl:px-10">
+                <!-- Loading -->
+                <div x-show="loading" class="text-dark-green/60 py-1">
+                  Searching…
+                </div>
+
+                <!-- Results -->
+                <div x-show="!loading" class="max-h-[220px] overflow-auto pr-2">
+                  <template x-for="(item, idx) in items" :key="idx">
+                    <button type="button" class="w-full text-left py-2 text-dark-blue hover:opacity-70 cursor-pointer" :class="active === idx ? 'opacity-70' : ''" @mouseenter="active = idx" @click="pick(item)" x-ref="['opt'+idx]">
+                      <span x-text="item"></span>
+                    </button>
+                  </template>
+
+                  <!-- No results hint -->
+                  <div x-show="items.length === 0" class="text-dark-green/60 py-1">
+                    No matches.
+                  </div>
+                </div>
+
+                <!-- Manual links -->
+                <div class="pt-6 flex flex-col gap-4">
+                  <a @click.prevent="modalOpen = true; modalTab = 'nmi'" href="#" class="text-orange hover:underline">Enter NMI Manually</a>
+                  <a @click.prevent="modalOpen = true; modalTab = 'address'" href="#" class="text-orange hover:underline">Enter Address Manually</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BUTTON -->
+          <div data-animate-fade-up>
+            <button type="button" class="bg-light-green text-dark-blue h-[51px] xl:h-[3.64vw] 3xl:h-[70px] flex items-center justify-center px-7 xl:px-9 3xl:px-10 rounded-full cursor-pointer" @click="trySubmit()">
+              <h4>See Offers</h4>
+            </button>
+          </div>
+
+          <!-- ERROR STATE -->
+          <div x-cloak x-show="triedSubmit && !selected" class="flex gap-4 items-start">
+            <div class="mt-0">
+              <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_21442_5833" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="26" height="26">
+                <rect width="26" height="26" fill="#D9D9D9"/>
+                </mask>
+                <g mask="url(#mask0_21442_5833)">
+                <path d="M11.2291 2.37401C11.9783 0.946647 14.0217 0.946646 14.7709 2.37401L24.4528 20.8205C25.1518 22.1523 24.1859 23.75 22.6819 23.75H3.31809C1.81407 23.75 0.848219 22.1523 1.5472 20.8205L11.2291 2.37401Z" fill="#FF8863"/>
+                <path d="M12.3612 7.76001H13.9082V9.96151L13.6447 16.7275L12.6247 16.736L12.3612 9.96151V7.76001ZM12.2422 20V18.1725H14.0272V20H12.2422Z" fill="#F5F5F7"/>
+                </g>
+              </svg>
+                
+            </div>
+            <div class="flex flex-col gap-2">
+              <p class="text-orange">Address not found.</p>
+              <p class="text-white/90">
+                Try searching using your <a @click.prevent="modalOpen = true; modalTab = 'nmi'" href="#" class="underline">NMI number</a> (from your electricity bill) or
+                <a @click.prevent="modalOpen = true; modalTab = 'address'" href="#" class="underline">enter your address manually</a>.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+
+  <!-- Modal -->
+  <template x-teleport="body">
+    <div x-cloak x-show="modalOpen" x-transition.opacity.duration.150ms class="fixed inset-0 z-[9999]" @keydown.escape.window="modalOpen = false" aria-modal="true" role="dialog">
+      <!-- Backdrop -->
+      <div class="absolute inset-0 bg-black/60" @click="modalOpen = false"></div>
+
+      <!-- Panel -->
+      <div class="relative min-h-full flex items-center justify-center p-4 lg:p-10">
+        <div class="w-full max-w-[1086px] bg-light rounded-[24px] md:rounded-[30px] overflow-auto max-h-[90svh] relative" @click.stop>
+          <!-- Header -->
+          <div class="p-6 lg:px-16 lg:pt-20 pb-6 md:pb-10 flex items-start justify-between gap-6">
+            <div>
+              <h1>Find your address</h1>
+              <p class="mt-4 lg:mt-8 max-w-[586px]">
+                You can search for your property using the street address details or the
+                NMI/MIRN number (found on the property's electricity/gas bill)
+              </p>
+            </div>
+
+            <button type="button" class="text-dark-blue h3 leading-none cursor-pointer absolute top-4 right-4 lg:top-8 lg:right-8" @click="modalOpen = false" aria-label="Close">
+              X
+            </button>
+          </div>
+
+          <!-- Type of Customer  -->
+          <div class="px-6 md:px-16" x-data="{ open: false, value: '' }" @keydown.escape.window="open = false">
+            <div class="relative" @click.outside="open = false">
+              <!-- Trigger -->
+              <button type="button" class="w-full cursor-pointer flex bg-white rounded-full pr-1 py-1 pl-6 xl:pl-10 items-center justify-between text-dark-blue/50 relative" @click="open = !open" :aria-expanded="open.toString()">
+                <span class="truncate" :class="value ? 'text-dark-blue' : 'text-dark-blue/50'" x-text="value || 'Type of Customer'"></span>
+
+                <div class="ml-auto bg-light-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group shrink-0">
+                  <svg class="duration-300" :class="open ? 'rotate-270' : 'rotate-90'" width="23" height="18" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.4004 0.605469C13.7402 0.265105 14.2911 0.265105 14.6309 0.605469L22.3945 8.38281C22.7346 8.72351 22.7346 9.27649 22.3945 9.61719L14.6309 17.3945C14.2911 17.7349 13.7402 17.7349 13.4004 17.3945C13.0606 17.0539 13.0607 16.5018 13.4004 16.1611L19.082 10.4697L19.6787 9.87207H0.349609V8.12793H19.6787L19.082 7.53027L13.4004 1.83887C13.0607 1.49823 13.0606 0.946093 13.4004 0.605469Z" fill="#002148" stroke="#C4F5B2" stroke-width="0.7"/>
+                  </svg>
+                </div>
+              </button>
+
+              <!-- Dropdown -->
+              <div x-cloak x-show="open" x-transition.opacity.duration.150ms class="absolute left-0 right-0 top-full mt-3 bg-white rounded-[28px] shadow-lg overflow-hidden z-[9999]">
+                <div class="p-3">
+                  <button type="button" class="w-full text-left px-5 py-3 rounded-2xl hover:bg-black/5 text-dark-blue" @click="value = 'Residential'; open = false">
+                    Residential
+                  </button>
+                  <button type="button" class="w-full text-left px-5 py-3 rounded-2xl hover:bg-black/5 text-dark-blue" @click="value = 'Business'; open = false">
+                    Business
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="px-6 md:px-16 mt-6 lg:mt-10">
+            <div class="grid grid-cols-2 text-center text-dark-blue">
+              <button type="button" class="py-3 h3 border-dark-blue cursor-pointer" :class="modalTab === 'nmi' ? 'border-b-[5px]' : 'border-b-1'" @click="modalTab = 'nmi'">
+                NMI Number
+              </button>
+              <button type="button" class="py-3 h3 border-dark-blue cursor-pointer" :class="modalTab === 'address' ? 'border-b-[5px]' : 'border-b-1'" @click="modalTab = 'address'">
+                Street Address
+              </button>
+            </div>
+          </div>
+
+          <!-- Body -->
+          <div class="p-6 md:py-10 md:px-16 pt-6">
+            <!-- NMI TAB -->
+            <div x-show="modalTab === 'nmi'" x-cloak>
+              <div class="space-y-4">
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="NMI Number">
+                <p class="text-dark-blue/50">Must be 10 or 11 characters long</p>
+
+               <div class="mt-6 md:mt-10">
+                
+  
+    
+    
+  
+
+  <a href="#" class="flex items-center group relative z-0">
+    <span class="w-full md:w-[163px] 3xl:w-[177px] h-14 3xl:h-[61px] text-[17px] bg-light-green text-dark-green flex items-center justify-center rounded-full">
+      Search NMI
+    </span>
+    <div class="hidden md:flex size-14 3xl:size-[61px] items-center justify-center rounded-full bg-light-green text-dark-green -ml-14 3xl:ml-[-61px] relative -z-10 group-hover:ml-0 duration-300 ease-in-out">
+      <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.8594 0.486328C14.2803 0.104724 14.9696 0.10478 15.3906 0.486328L23.4932 7.83203C23.9025 8.20341 23.9025 8.79659 23.4932 9.16797L15.3906 16.5137C14.9696 16.8952 14.2803 16.8953 13.8594 16.5137C13.4497 16.1422 13.4497 15.5492 13.8594 15.1777L19.7881 9.80273L20.1719 9.4541H0.200195V7.5459H20.1719L19.7881 7.19727L13.8594 1.82227C13.4497 1.45083 13.4497 0.857767 13.8594 0.486328Z" class="stroke-light-green fill-dark-green" stroke-width="0.7"/>
+      </svg>
+    </div>
+  </a>
+
+              </div>
+              </div>
+            </div>
+
+            <!-- ADDRESS TAB -->
+            <div x-show="modalTab === 'address'" x-cloak>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Lot No.">
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Unit No.">
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Street No.">
+              </div>
+
+              <div class="mt-4 lg:mt-8">
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Unit Type">
+              </div>
+
+              <div class="mt-4 lg:mt-8 space-y-4 lg:space-y-8">
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Street Name*">
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Street Type*">
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="City/Suburb*">
+              </div>
+
+              <div class="mt-4 lg:mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="State*">
+                <input type="text" class="bg-white text-dark-green placeholder:text-dark-green/40 rounded-full focus:outline-none w-full h-14 3xl:h-[61px] px-6 xl:px-10" placeholder="Postcode*">
+              </div>
+
+              <div class="mt-6 md:mt-10">
+                
+  
+    
+    
+  
+
+  <a href="#" class="flex items-center group relative z-0">
+    <span class="w-full md:w-[163px] 3xl:w-[177px] h-14 3xl:h-[61px] text-[17px] bg-light-green text-dark-green flex items-center justify-center rounded-full">
+      Search
+    </span>
+    <div class="hidden md:flex size-14 3xl:size-[61px] items-center justify-center rounded-full bg-light-green text-dark-green -ml-14 3xl:ml-[-61px] relative -z-10 group-hover:ml-0 duration-300 ease-in-out">
+      <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.8594 0.486328C14.2803 0.104724 14.9696 0.10478 15.3906 0.486328L23.4932 7.83203C23.9025 8.20341 23.9025 8.79659 23.4932 9.16797L15.3906 16.5137C14.9696 16.8952 14.2803 16.8953 13.8594 16.5137C13.4497 16.1422 13.4497 15.5492 13.8594 15.1777L19.7881 9.80273L20.1719 9.4541H0.200195V7.5459H20.1719L19.7881 7.19727L13.8594 1.82227C13.4497 1.45083 13.4497 0.857767 13.8594 0.486328Z" class="stroke-light-green fill-dark-green" stroke-width="0.7"/>
+      </svg>
+    </div>
+  </a>
+
+              </div>
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
 </section>
 
  
