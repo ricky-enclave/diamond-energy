@@ -1,0 +1,202 @@
+{# src/pages/index.njk #}
+{% extends "layouts/base.njk" %}
+{% set title = "Your Meter | Diamond Energy" %}
+
+{% from "components/button.njk" import Button %}
+{% from "components/spacing.njk" import sectionTop, sectionBottom %}
+
+
+{% block content %}
+
+
+<section x-data="{ tab: 'moreAboutSmartMeter' }" class="{{ sectionTop('medium') }} {{ sectionBottom('none') }} bg-light text-dark-blue">
+  <div class="container">
+    <div class="grid grid-cols-1 xl:grid-cols-[21vw_1fr] 3xl:grid-cols-[408px_1fr] gap-10 xl:gap-[8.3vw] 3xl:gap-40">
+      <div data-animate-fade-up class="flex xl:flex-col gap-4 md:gap-7 pb-5 xl:pb-0 overflow-auto">
+        <button @click="tab = 'requestSmartMeter'" :class="tab === 'requestSmartMeter' ? 'bg-light-green text-dark-green' : 'bg-white text-dark-blue'" class="cursor-pointer py-4 md:py-5 3xl:py-6 px-7 p rounded-full text-left shrink-0" type="button">Request a smart meter</button>
+        <button @click="tab = 'moreAboutSmartMeter'" :class="tab === 'moreAboutSmartMeter' ? 'bg-light-green text-dark-green' : 'bg-white text-dark-blue'" class="cursor-pointer py-4 md:py-5 3xl:py-6 px-7 p rounded-full text-left shrink-0" type="button">More about smart meters</button>
+        <button @click="tab = 'meteringForSolarAndBatteries'" :class="tab === 'meteringForSolarAndBatteries' ? 'bg-light-green text-dark-green' : 'bg-white text-dark-blue'" class="cursor-pointer py-4 md:py-5 3xl:py-6 px-7 p rounded-full text-left shrink-0" type="button">Metering for solar and batteries</button>
+        <button @click="tab = 'usingASmartMeterToHelpYouSave'" :class="tab === 'usingASmartMeterToHelpYouSave' ? 'bg-light-green text-dark-green' : 'bg-white text-dark-blue'" class="cursor-pointer py-4 md:py-5 3xl:py-6 px-7 p rounded-full text-left shrink-0" type="button">Using a smart meter to help you save</button>
+        <button @click="tab = 'newConnectionApplications'" :class="tab === 'newConnectionApplications' ? 'bg-light-green text-dark-green' : 'bg-white text-dark-blue'" class="cursor-pointer py-4 md:py-5 3xl:py-6 px-7 p rounded-full text-left shrink-0" type="button">New connection applications</button>
+        <button @click="tab = 'meteringAdditions'" :class="tab === 'meteringAdditions' ? 'bg-light-green text-dark-green' : 'bg-white text-dark-blue'" class="cursor-pointer py-4 md:py-5 3xl:py-6 px-7 p rounded-full text-left shrink-0" type="button">Metering additions / Alterations & Abolishment Applications</button>
+        <button @click="tab = 'howToReadYourMeter'" :class="tab === 'howToReadYourMeter' ? 'bg-light-green text-dark-green' : 'bg-white text-dark-blue'" class="cursor-pointer py-4 md:py-5 3xl:py-6 px-7 p rounded-full text-left shrink-0" type="button">How to read your meter</button>
+      </div>
+
+      <div x-show="tab === 'requestSmartMeter'" x-cloak data-animate-fade-up class="flex flex-col gap-8 lg:gap-10 xl:gap-12">
+        <h1 class="title">Request a <br/> smart meters</h1>
+        <div class="max-w-[968px]">
+          <p>A smart meter is an electronic device that records electricity consumption and communicates the information to your electricity retailer for monitoring and billing. Smart meters typically record energy half hourly and report at least daily.</p>
+        </div>
+      </div>
+
+      <div x-show="tab === 'moreAboutSmartMeter'" x-cloak data-animate-fade-up class="flex flex-col gap-8 lg:gap-10 xl:gap-12">
+        <h1 class="title">More about <br/> smart meters</h1>
+        <div class="max-w-[968px]">
+          <p>A smart meter is an electronic device that records electricity consumption and communicates the information to your electricity retailer for monitoring and billing. Smart meters typically record energy half hourly and report at least daily.</p>
+          <br/>
+          <h5>Preparing for Your Smart Meter Upgrade</h5>
+          <p>From 1 December 2025, Diamond Energy will begin upgrading basic electricity meters as part of the Accelerated Smart Meter Rollout Program (ASMROP). If you’re included in the rollout, here’s what you need to know:</p>
+          <br/>
+          <h5>Who Is Included in the Rollout?</h5>
+          <p>Customers are selected based on coordination between:</p>
+          <ul class="ul">
+            <li>Distribution Network Service Providers (DNSPs) – who submit Legacy Meter Replacement Plans (LMRPs) to the Australian Energy Regulator (AER).</li>
+            <li>Diamond Energy – who notifies customers and manages installation logistics.</li>
+            <li>Metering Coordinators (MCs) – who carry out the meter replacements.</li>
+          </ul>
+          <br/>
+          <h5>Want to Learn More?</h5>
+          <p>AEMC: Accelerating Smart Meter Deployment<br/>
+          AEMO: Metering Services Review – Accelerating Smart Meter Deployment<br/>
+          AER: Consumer rights and smart meters | Australian Energy Regulator (AER)</p>
+          <br/>
+          <h5>How much will a smart meter cost me?</h5>
+          <p>We have developed a special offer for you! Smart meter installation is free of charge for all standard installations Fees may apply for non-standard installations. Where possible, we will advise you in advance if this is the case.</p>
+          <br/>
+          <h5>What happens once I agree to get a smart meter?</h5>
+          <p>We will forward your information to a qualified smart meter installer. They will contact you and arrange a time for the meter to be installed. We will then advise you of the confirmed date for the meter installation.</p>
+          <br/>
+          <h5>It takes about an hour to install and you will probably be without power during this time.</h5>
+          <p>We will advise you when the installation is complete. The installer needs access to your meter board and if this is easily accessible you don’t even need to be home during the installation.</p>
+          <br/>
+          <h5>Will my rates change after a smart meter is installed?</h5>
+          <p>Local poles and wires company are continuing to introduce new rules resulting in amendments to your network charges when you have a smart meter installed. This may result in you no longer being eligible to receive the same rates. Should this be the case, we would apply the applicable time of use rates that correspond with the updated network charges. You can contact us for updated details that are specific to your area.</p>
+          <br/>
+          <h5>What changes can I expect, after the meter is installed?</h5>
+          <p>The data provided by the smart meter enables you to:</p>
+          <ul class="ul">
+            <li>Access your half hourly energy usage so you can better manage and monitor your electricity use and reduce your bills.</li>
+            <li>Have your meter remotely read, reducing the likelihood of estimated bills. Meter data collected remotely negates the need for quarterly meter access.</li>
+          </ul>
+
+          <p>We can also help you understand your electricity usage better by:</p>
+          <ul class="ul">
+            <li>Providing useful tips to help you save.</li>
+            <li>Analysing your bill and usage profile to ensure you are on the right tariff structure to achieve maximum savings.</li>
+          </ul>
+          <br/>
+          <h5>Do I have a smart meter?</h5>
+          <p>Most customers in Victoria already have a smart meter. Some customers in NSW, SA and Qld may also have a smart meter. If you are unsure of what type of meter you have, you can contact us.</p>
+          <br/>
+          <h5>Are smart meters safe? Do they cause health issues?</h5>
+          <p>All smart meters must comply with the electromagnetic exposure limits developed by the Australian Radiation Protection and Nuclear Safety Agency. The same limits apply to mobile and cordless phones, Wi-Fi routers and baby monitors.</p>
+          <br/>
+          The Australian Radiation Protection and Nuclear Safety Agency have reviewed the impact of frequency from smart meters and have stated “Health authorities around the world, including ARPANSA and the World Health Organization (WHO), have examined the scientific evidence regarding possible health effects from smart meters. Current research indicates that there are no established health effects from the low exposure to the RF EME from smart meters”. You can read more here.
+          <br/>
+          <h5>Who has access to my electricity usage data?</h5>
+          <p>Data from your electricity meter is considered private information and as such is covered by our Privacy Policy.</p>
+          <br/>
+          <h5>How can I find out more information about smart meters?</h5>
+          <p>For more information please refer to relevant State Governments information pages for Qld, SA, NSW and Vic.</p>
+        </div>
+      </div>
+
+      <div x-show="tab === 'meteringForSolarAndBatteries'" x-cloak data-animate-fade-up class="flex flex-col gap-8 lg:gap-10 xl:gap-12">
+        <h1 class="title">Metering for <br/> solar and batteries</h1>
+        <div class="max-w-[968px]">
+          <p>A smart meter is an electronic device that records electricity consumption and communicates the information to your electricity retailer for monitoring and billing. Smart meters typically record energy half hourly and report at least daily.</p>
+        </div>
+      </div>
+
+      <div x-show="tab === 'usingASmartMeterToHelpYouSave'" x-cloak data-animate-fade-up class="flex flex-col gap-8 lg:gap-10 xl:gap-12">
+        <h1 class="title">Using a smart meter  <br/> to help you save</h1>
+        <div class="max-w-[968px]">
+          <p>A smart meter is an electronic device that records electricity consumption and communicates the information to your electricity retailer for monitoring and billing. Smart meters typically record energy half hourly and report at least daily.</p>
+        </div>
+      </div>
+
+      <div x-show="tab === 'newConnectionApplications'" x-cloak data-animate-fade-up class="flex flex-col gap-8 lg:gap-10 xl:gap-12">
+        <h1 class="title">New connection  <br/> applications</h1>
+        <div class="max-w-[968px]">
+          <p>A smart meter is an electronic device that records electricity consumption and communicates the information to your electricity retailer for monitoring and billing. Smart meters typically record energy half hourly and report at least daily.</p>
+        </div>
+      </div>
+
+      <div x-show="tab === 'meteringAdditions'" x-cloak data-animate-fade-up class="flex flex-col gap-8 lg:gap-10 xl:gap-12">
+        <h1 class="title">Metering additions / Alterations & Abolishment Applications</h1>
+        <div class="max-w-[968px]">
+          <p>A smart meter is an electronic device that records electricity consumption and communicates the information to your electricity retailer for monitoring and billing. Smart meters typically record energy half hourly and report at least daily.</p>
+        </div>
+      </div>
+
+      <div x-show="tab === 'howToReadYourMeter'" x-cloak data-animate-fade-up class="flex flex-col gap-8 lg:gap-10 xl:gap-12">
+        <h1 class="title">How to   <br/> read your meter</h1>
+        <div class="max-w-[968px]">
+          <p>A smart meter is an electronic device that records electricity consumption and communicates the information to your electricity retailer for monitoring and billing. Smart meters typically record energy half hourly and report at least daily.</p>
+        </div>
+      </div>
+
+    </div>
+    
+  </div>
+</section>
+ 
+
+<!-- Start the process today Section -->
+<section class="{{ sectionTop('large') }} {{ sectionBottom('none') }} bg-light text-dark-blue">
+    <div class="container">
+      <div class="flex flex-col">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-7">
+          <div data-animate-fade-up class="bg-light-green rounded-b-theme lg:rounded-b-none rounded-t-theme lg:rounded-t-theme-lg px-6 xl:px-10 pt-8 xl:pt-10 pb-12 flex flex-col gap-4">
+            <div  class="flex items-center justify-between">
+              <div class="h4">Help & Support</div>
+              <a
+                href="#"
+                class="shrink-0 bg-dark-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group"
+              >
+                <svg class="group-hover:rotate-45 duration-300" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.40388 1.2202C4.40346 0.739275 4.79303 0.349709 5.27395 0.350129L16.2631 0.359797C16.7445 0.360217 17.1355 0.751228 17.1359 1.23263L17.1456 12.2218C17.146 12.7027 16.7565 13.0923 16.2755 13.0919C15.7944 13.0912 15.404 12.7008 15.4034 12.2197L15.3965 4.17776L15.3958 3.33324L1.72806 17.001L0.494769 15.7677L14.1625 2.09994L13.318 2.09925L5.27603 2.09235C4.79494 2.0917 4.4045 1.7013 4.40388 1.2202Z" fill="#F5F5F7" stroke="#295E56" stroke-width="0.7"/>
+                </svg>  
+              </a>
+            </div>
+          </div>
+
+          <div data-animate-fade-up class="bg-light-green rounded-b-theme lg:rounded-b-none rounded-t-theme lg:rounded-t-theme-lg px-6 xl:px-10 pt-8 xl:pt-10 pb-12 flex flex-col gap-4">
+            <div  class="flex items-center justify-between">
+              <div class="h4">Business Queries</div>
+              <a
+                href="#"
+                class="shrink-0 bg-dark-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group"
+              >
+                <svg class="group-hover:rotate-45 duration-300" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.40388 1.2202C4.40346 0.739275 4.79303 0.349709 5.27395 0.350129L16.2631 0.359797C16.7445 0.360217 17.1355 0.751228 17.1359 1.23263L17.1456 12.2218C17.146 12.7027 16.7565 13.0923 16.2755 13.0919C15.7944 13.0912 15.404 12.7008 15.4034 12.2197L15.3965 4.17776L15.3958 3.33324L1.72806 17.001L0.494769 15.7677L14.1625 2.09994L13.318 2.09925L5.27603 2.09235C4.79494 2.0917 4.4045 1.7013 4.40388 1.2202Z" fill="#F5F5F7" stroke="#295E56" stroke-width="0.7"/>
+                </svg>  
+              </a>
+            </div>
+          </div>
+
+          <div data-animate-fade-up class="bg-light-green rounded-b-theme lg:rounded-b-none rounded-t-theme lg:rounded-t-theme-lg px-6 xl:px-10 pt-8 xl:pt-10 pb-12 flex flex-col gap-4">
+            <div  class="flex items-center justify-between">
+              <div class="h4">Faults and Outages</div>
+              <a
+                href="#"
+                class="shrink-0 bg-dark-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group"
+              >
+                <svg class="group-hover:rotate-45 duration-300" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.40388 1.2202C4.40346 0.739275 4.79303 0.349709 5.27395 0.350129L16.2631 0.359797C16.7445 0.360217 17.1355 0.751228 17.1359 1.23263L17.1456 12.2218C17.146 12.7027 16.7565 13.0923 16.2755 13.0919C15.7944 13.0912 15.404 12.7008 15.4034 12.2197L15.3965 4.17776L15.3958 3.33324L1.72806 17.001L0.494769 15.7677L14.1625 2.09994L13.318 2.09925L5.27603 2.09235C4.79494 2.0917 4.4045 1.7013 4.40388 1.2202Z" fill="#F5F5F7" stroke="#295E56" stroke-width="0.7"/>
+                </svg>  
+              </a>
+            </div>
+          </div>
+
+          <div data-animate-fade-up class="bg-light-green rounded-b-theme lg:rounded-b-none rounded-t-theme lg:rounded-t-theme-lg px-6 xl:px-10 pt-8 xl:pt-10 pb-12 flex flex-col gap-4">
+            <div  class="flex items-center justify-between">
+              <div class="h4">Contact Us</div>
+              <a
+                href="#"
+                class="shrink-0 bg-dark-green cursor-pointer size-14 3xl:size-[61px] flex items-center justify-center rounded-full group"
+              >
+                <svg class="group-hover:rotate-45 duration-300" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.40388 1.2202C4.40346 0.739275 4.79303 0.349709 5.27395 0.350129L16.2631 0.359797C16.7445 0.360217 17.1355 0.751228 17.1359 1.23263L17.1456 12.2218C17.146 12.7027 16.7565 13.0923 16.2755 13.0919C15.7944 13.0912 15.404 12.7008 15.4034 12.2197L15.3965 4.17776L15.3958 3.33324L1.72806 17.001L0.494769 15.7677L14.1625 2.09994L13.318 2.09925L5.27603 2.09235C4.79494 2.0917 4.4045 1.7013 4.40388 1.2202Z" fill="#F5F5F7" stroke="#295E56" stroke-width="0.7"/>
+                </svg>  
+              </a>
+            </div>
+          </div>
+ 
+        </div>
+      </div>
+    </div>
+</section>
+
+{% endblock %}
+ 
